@@ -1,0 +1,1269 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADRAGON | AI Solo Company OS</title>
+    <meta
+      name="description"
+      content="Personal technology portfolio for AI solo-company systems, agent audit protocols, learning tools, evidence-led workflows, and solo-builder leverage."
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --paper: oklch(0.985 0.006 90);
+        --surface: oklch(0.965 0.007 90);
+        --surface-2: oklch(0.94 0.01 95);
+        --ink: oklch(0.205 0.015 250);
+        --muted: oklch(0.48 0.02 250);
+        --faint: oklch(0.68 0.018 250);
+        --line: oklch(0.86 0.012 95);
+        --line-strong: oklch(0.74 0.018 95);
+        --blue: oklch(0.46 0.13 250);
+        --green: oklch(0.45 0.11 155);
+        --amber: oklch(0.55 0.12 65);
+        --font-ui: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", "Noto Sans SC", "Source Han Sans SC", "PingFang SC",
+          "Microsoft YaHei", sans-serif;
+        --font-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC",
+          "STSong", "SimSun", serif;
+        --font-latin-serif: Georgia, "Iowan Old Style", "Palatino Linotype",
+          Palatino, Charter, "Times New Roman", serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--paper);
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        background:
+          linear-gradient(180deg, oklch(0.99 0.006 90), var(--paper) 28rem),
+          var(--paper);
+        color: var(--ink);
+        font-family: var(--font-ui);
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      p,
+      a,
+      span {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+
+      a {
+        text-decoration-thickness: 0.08em;
+        text-underline-offset: 0.18em;
+      }
+
+      .section-frame {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .content-wrap {
+        margin-inline: auto;
+        max-width: 72rem;
+        padding-inline: 1.25rem;
+      }
+
+      .measure {
+        max-width: 44rem;
+      }
+
+      .wide-measure {
+        max-width: 58rem;
+      }
+
+      .text-balance {
+        text-wrap: balance;
+      }
+
+      .text-pretty {
+        text-wrap: pretty;
+      }
+
+      .hero-title-strip {
+        font-family: var(--font-latin-serif);
+        font-size: clamp(2.65rem, 5.8vw, 4rem);
+        font-weight: 700;
+        letter-spacing: -0.015em;
+        max-width: 18ch;
+        overflow-wrap: normal;
+        text-wrap: balance;
+        word-break: normal;
+      }
+
+      .serif-type {
+        font-family: var(--font-latin-serif);
+      }
+
+      .cjk-safe .serif-type,
+      .cjk-safe .wide-measure,
+      .cjk-safe .article-title,
+      .cjk-safe .devlog-prose :where(p, li, blockquote, h2, h3) {
+        font-family: var(--font-serif);
+      }
+
+      .cjk-safe .serif-type,
+      .cjk-safe .wide-measure {
+        font-weight: 550;
+      }
+
+      .cjk-safe .article-title,
+      .cjk-safe .devlog-prose :where(h2, h3) {
+        font-weight: 600;
+      }
+
+      .quiet-link {
+        color: var(--blue);
+        font-weight: 650;
+        text-decoration-line: underline;
+      }
+
+      .quiet-link:hover,
+      .quiet-link:focus-visible {
+        color: var(--ink);
+        outline: none;
+      }
+
+      .evidence-link {
+        color: var(--muted);
+        font-weight: 650;
+        text-decoration-line: underline;
+      }
+
+      .evidence-link:hover,
+      .evidence-link:focus-visible {
+        color: var(--blue);
+        outline: none;
+      }
+
+      .button-link {
+        align-items: center;
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        color: var(--ink);
+        display: inline-flex;
+        font-weight: 650;
+        min-height: 2.65rem;
+        padding: 0.65rem 1rem;
+        text-decoration: none;
+        transition:
+          background-color 0.18s ease,
+          border-color 0.18s ease,
+          color 0.18s ease;
+      }
+
+      .button-link:hover,
+      .button-link:focus-visible {
+        background: var(--surface-2);
+        border-color: var(--ink);
+        outline: none;
+      }
+
+      .primary-action {
+        background: var(--ink);
+        border-color: var(--ink);
+        color: var(--paper);
+      }
+
+      .primary-action:hover,
+      .primary-action:focus-visible {
+        background: var(--blue);
+        border-color: var(--blue);
+        color: var(--paper);
+      }
+
+      .artifact-figure {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: clamp(0.75rem, 2vw, 1.25rem);
+      }
+
+      .artifact-figure img {
+        background: oklch(0.992 0.004 90);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+      }
+
+      .project-card {
+        border-top: 1px solid var(--line);
+        display: grid;
+        gap: 1rem;
+        padding-block: 1.5rem;
+      }
+
+      .project-card:last-child {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .project-card:hover .project-title {
+        color: var(--blue);
+      }
+
+      .project-card.is-featured {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: clamp(1rem, 3vw, 1.5rem);
+      }
+
+      .status-chip {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        display: inline-flex;
+        font-size: 0.75rem;
+        font-weight: 650;
+        line-height: 1;
+        padding: 0.42rem 0.6rem;
+      }
+
+      .status-chip[data-tone="public"] {
+        border-color: oklch(0.72 0.08 155);
+        color: var(--green);
+      }
+
+      .status-chip[data-tone="preview"] {
+        border-color: oklch(0.78 0.08 65);
+        color: var(--amber);
+      }
+
+      .tag-chip {
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+
+      .tag-chip::before {
+        color: var(--faint);
+        content: "#";
+      }
+
+      .principle-row {
+        border-top: 1px solid var(--line);
+        display: grid;
+        gap: 1rem;
+        padding-block: 1.35rem;
+      }
+
+      .principle-row:last-child {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .notes-list {
+        border-bottom: 1px solid var(--line);
+        border-top: 1px solid var(--line);
+      }
+
+      .note-row {
+        display: grid;
+        gap: 0.75rem;
+        padding-block: 1rem;
+        text-decoration: none;
+      }
+
+      .note-row + .note-row {
+        border-top: 1px solid var(--line);
+      }
+
+      .note-row time {
+        color: var(--faint);
+        font-size: 0.85rem;
+      }
+
+      .note-row span {
+        color: var(--ink);
+        font-size: 1.05rem;
+        font-weight: 650;
+      }
+
+      .qr-card {
+        align-items: start;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        display: grid;
+        gap: 1rem;
+        max-width: 24rem;
+        padding: 1rem;
+        text-decoration: none;
+      }
+
+      .qr-card img {
+        background: oklch(0.992 0.004 90);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        height: 8.5rem;
+        padding: 0.5rem;
+        width: 8.5rem;
+      }
+
+      .annotate-entry {
+        background: var(--ink);
+        border: 1px solid var(--ink);
+        border-radius: 999px;
+        bottom: 1rem;
+        box-shadow: 0 10px 30px oklch(0.2 0.02 250 / 0.18);
+        color: var(--paper);
+        font-size: 0.85rem;
+        font-weight: 700;
+        min-height: 2.5rem;
+        padding: 0.55rem 0.9rem;
+        position: fixed;
+        right: 1rem;
+        z-index: 80;
+      }
+
+      .annotate-entry.is-active,
+      .annotate-entry:hover,
+      .annotate-entry:focus-visible {
+        background: var(--blue);
+        border-color: var(--blue);
+        outline: none;
+      }
+
+      .annotate-toolbar {
+        align-items: center;
+        background: var(--ink);
+        border-radius: 999px;
+        bottom: 1rem;
+        box-shadow: 0 10px 30px oklch(0.2 0.02 250 / 0.2);
+        color: var(--paper);
+        display: none;
+        gap: 0.8rem;
+        left: 50%;
+        max-width: calc(100vw - 2rem);
+        padding: 0.65rem 0.8rem 0.65rem 1rem;
+        position: fixed;
+        transform: translateX(-50%);
+        z-index: 90;
+      }
+
+      .annotate-toolbar.is-visible {
+        display: flex;
+      }
+
+      .annotate-toolbar span {
+        font-size: 0.85rem;
+        white-space: nowrap;
+      }
+
+      .annotate-toolbar button,
+      .annotate-panel button {
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        padding: 0.45rem 0.7rem;
+      }
+
+      .ui-annotate-hover {
+        border: 2px solid var(--blue);
+        border-radius: 6px;
+        box-shadow: 0 0 0 4px oklch(0.46 0.13 250 / 0.16);
+        display: none;
+        left: 0;
+        pointer-events: none;
+        position: fixed;
+        top: 0;
+        z-index: 85;
+      }
+
+      .annotate-panel {
+        background: var(--paper);
+        border: 1px solid var(--line-strong);
+        border-radius: 10px;
+        bottom: 4.25rem;
+        box-shadow: 0 20px 60px oklch(0.2 0.02 250 / 0.22);
+        display: none;
+        gap: 0.75rem;
+        max-width: min(28rem, calc(100vw - 2rem));
+        padding: 1rem;
+        position: fixed;
+        right: 1rem;
+        z-index: 95;
+      }
+
+      .annotate-panel.is-visible {
+        display: grid;
+      }
+
+      .annotate-panel-head {
+        align-items: center;
+        display: flex;
+        gap: 1rem;
+        justify-content: space-between;
+      }
+
+      .annotate-panel p {
+        color: var(--muted);
+        font-size: 0.8rem;
+        margin: 0;
+      }
+
+      .annotate-panel textarea {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: var(--ink);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        padding: 0.75rem;
+        resize: vertical;
+        width: 100%;
+      }
+
+      .annotate-panel textarea:focus {
+        border-color: var(--blue);
+        outline: none;
+      }
+
+      .annotate-fallback {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: var(--muted);
+        font-size: 0.75rem;
+        line-height: 1.5;
+        max-height: 12rem;
+        overflow: auto;
+        padding: 0.75rem;
+        white-space: pre-wrap;
+      }
+
+      .project-index-panel,
+      .project-index-panel * {
+        max-width: 100%;
+      }
+
+      .cjk-safe {
+        line-height: 1.78;
+      }
+
+      .cjk-safe .hero-title,
+      .cjk-safe .hero-description {
+        line-break: loose;
+        overflow-wrap: anywhere;
+        word-break: normal;
+      }
+
+      .cjk-safe .hero-title-strip {
+        font-family: var(--font-serif);
+        font-weight: 700;
+        max-width: none;
+        overflow-wrap: normal;
+        text-wrap: nowrap;
+        white-space: nowrap;
+      }
+
+      @media (min-width: 768px) {
+        .content-wrap {
+          padding-inline: 2rem;
+        }
+
+        .project-card {
+          grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+        }
+
+        .principle-row {
+          grid-template-columns: 8rem minmax(0, 1fr);
+        }
+
+        .note-row {
+          grid-template-columns: 8rem minmax(0, 1fr);
+        }
+
+        .qr-card {
+          grid-template-columns: 8.5rem minmax(0, 1fr);
+        }
+      }
+
+      @media (max-width: 767px) {
+        .hero-title-strip,
+        .cjk-safe .hero-title-strip {
+          font-size: clamp(2.7rem, 13vw, 4.2rem);
+          max-width: 11ch;
+          text-wrap: balance;
+          white-space: normal;
+        }
+
+        .project-index-panel img {
+          aspect-ratio: 16 / 10;
+          max-height: 14rem;
+          object-fit: contain;
+          width: 100%;
+        }
+
+        .annotate-toolbar {
+          align-items: stretch;
+          border-radius: 10px;
+          flex-direction: column;
+          left: 1rem;
+          right: 1rem;
+          transform: none;
+        }
+
+        .annotate-toolbar span {
+          white-space: normal;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="antialiased selection:bg-[color:oklch(0.88_0.05_250)]">
+    <header class="sticky top-0 z-50 border-b border-[color:var(--line)] bg-[color:oklch(0.985_0.006_90_/_0.86)] backdrop-blur-xl">
+      <nav class="content-wrap flex items-center justify-between py-4">
+        <a href="#hero" class="text-sm font-semibold tracking-[0.12em] text-[color:var(--ink)] no-underline transition hover:text-[color:var(--blue)]">
+          ADRAGON
+        </a>
+        <div class="flex items-center gap-5">
+          <ul class="hidden items-center gap-5 text-sm text-[color:var(--muted)] md:flex">
+            <li><a class="no-underline transition hover:text-[color:var(--blue)]" href="#about" data-i18n="nav.about">关于</a></li>
+            <li><a class="no-underline transition hover:text-[color:var(--blue)]" href="#projects" data-i18n="nav.projects">项目</a></li>
+            <li><a class="no-underline transition hover:text-[color:var(--blue)]" href="#systems" data-i18n="nav.systems">系统</a></li>
+            <li><a class="no-underline transition hover:text-[color:var(--blue)]" href="#notes" data-i18n="nav.notes">思考</a></li>
+            <li><a class="no-underline transition hover:text-[color:var(--blue)]" href="#contact" data-i18n="nav.contact">联系</a></li>
+          </ul>
+          <button id="langToggle" type="button" class="button-link min-h-0 px-3 py-1 text-xs text-[color:var(--muted)]">
+            English
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="pageRoot" class="site-shell cjk-safe">
+      <section id="hero" class="section-frame">
+        <div class="content-wrap py-14 md:py-20">
+          <h1 class="hero-title hero-title-strip text-balance text-4xl font-bold leading-[0.98] tracking-normal text-[color:var(--ink)] sm:text-5xl md:text-6xl lg:text-7xl" data-i18n="hero.title">我在构建 AI 一人公司的操作系统。</h1>
+
+          <div class="mt-10 grid gap-12 md:grid-cols-[minmax(0,0.88fr)_minmax(20rem,0.72fr)] md:items-start md:mt-14">
+          <div class="measure">
+            <p class="text-sm font-semibold text-[color:var(--muted)]" data-i18n="hero.tagline">超级个体 / 一人公司 / AI 人效系统</p>
+            <h2 class="serif-type mt-4 max-w-2xl text-2xl font-semibold leading-9 text-[color:var(--ink)] md:text-3xl" data-i18n="hero.introTitle">把一个人的学习、审计和 Agent 协作，组织成可持续产能。</h2>
+            <p class="serif-type hero-description mt-5 text-pretty text-lg leading-8 text-[color:var(--muted)]" data-i18n="hero.description">
+              从学习复盘、平台审计到多 Agent 协作，我把 AI 变成可记忆、可审计、可交接的生产系统，让一个人拥有小团队级别的执行力。
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="#projects" class="button-link primary-action text-sm" data-i18n="hero.ctaProjects">查看项目</a>
+              <a href="https://github.com/aDragon0707" target="_blank" rel="noopener noreferrer" class="button-link text-sm" data-i18n="hero.ctaGithub">打开 GitHub</a>
+            </div>
+          </div>
+
+          <aside class="project-index-panel">
+            <p class="text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--faint)]" data-i18n="projects.eyebrow">项目索引</p>
+            <div id="projectIndex" class="mt-3"></div>
+          </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-frame">
+        <div class="content-wrap py-10 md:py-14">
+          <figure class="artifact-figure">
+            <img src="public/assets/solo-ai-company-os-home.zh-CN.svg" alt="Solo AI Company OS product map" class="block aspect-[1400/820] w-full object-contain" />
+            <figcaption class="mt-3 text-sm leading-6 text-[color:var(--muted)]" data-i18n="artifact.caption">
+              Solo AI Company OS，作为个人操作系统工作的公开锚点。
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="about" class="section-frame">
+        <div class="content-wrap grid gap-8 py-16 md:grid-cols-[12rem_minmax(0,1fr)] md:py-20">
+          <h2 class="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--faint)]" data-i18n="about.title">一人公司的底层命题</h2>
+          <div>
+            <p class="wide-measure text-pretty text-xl leading-9 text-[color:var(--ink)]" data-i18n="about.body">
+              我在围绕一个问题搭建个人实验室：AI 时代，一个人如何把阅读、学习、审计、写作和 Agent 协作组织成稳定产能，而不是一次次聊天窗口里的短期兴奋？我反复测试的答案是长期记忆、证据回执、可复查决策，以及持续迭代的学习循环。
+            </p>
+            <div class="mt-8">
+              <p class="mb-3 text-sm font-semibold text-[color:var(--muted)]" data-i18n="about.skillsLabel">工作材料</p>
+              <div id="skills" class="flex flex-wrap gap-x-4 gap-y-2"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section-frame">
+        <div class="content-wrap py-16 md:py-20">
+          <div class="grid gap-5 md:grid-cols-[12rem_minmax(0,1fr)]">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--faint)]" data-i18n="projects.subtitle">从学习到审计，再到 Agent 协作</p>
+            </div>
+            <div>
+              <h2 class="text-4xl font-bold text-[color:var(--ink)] md:text-5xl" data-i18n="projects.title">六个 AI 人效系统</h2>
+              <p class="mt-4 wide-measure text-pretty text-base leading-7 text-[color:var(--muted)]" data-i18n="projects.description">
+                它们不是零散项目，而是同一条路线：让一个人借助 AI 保存思考、组织行动、验证结果，并在失败之后继续迭代。公开项目给出仓库或网页，私有系统只展示能力边界。
+              </p>
+            </div>
+          </div>
+
+          <div id="projectCards" class="mt-10 grid gap-8"></div>
+        </div>
+      </section>
+
+      <section id="systems" class="section-frame">
+        <div class="content-wrap grid gap-8 py-16 md:grid-cols-[12rem_minmax(0,1fr)] md:py-20">
+          <div>
+            <h2 class="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--faint)]" data-i18n="systems.title">一人公司原则</h2>
+          </div>
+          <div>
+            <p class="wide-measure text-pretty text-xl leading-9 text-[color:var(--ink)]" data-i18n="systems.subtitle">
+              不是把 AI 当聊天工具，而是把它组织成可以长期运行、可以复查、可以交接的工作系统。
+            </p>
+            <div id="systemsGrid" class="mt-8"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="notes" class="section-frame">
+        <div class="content-wrap grid gap-8 py-16 md:grid-cols-[12rem_minmax(0,1fr)] md:py-20">
+          <div>
+            <h2 class="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--faint)]" data-i18n="notes.title">思考</h2>
+          </div>
+          <div>
+            <p class="wide-measure text-pretty text-xl leading-9 text-[color:var(--ink)]" data-i18n="notes.subtitle">
+              这里放个人思考、构建笔记，以及这些系统继续演化时留下的判断。
+            </p>
+            <div id="notesList" class="notes-list mt-8"></div>
+            <div class="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+              <a class="quiet-link" href="https://adragons-portfolio.vercel.app/zh/devlog" data-i18n="notes.viewAll">阅读全部思考</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <div class="content-wrap py-14">
+        <div class="grid gap-6 md:grid-cols-[12rem_minmax(0,1fr)]">
+          <h2 class="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--faint)]" data-i18n="contact.title">联系</h2>
+          <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-start">
+            <div>
+            <p class="max-w-2xl text-lg leading-8 text-[color:var(--ink)]" data-i18n="contact.body">
+              你可以通过 GitHub 或邮箱联系我。二维码会打开公开作品集页面。
+            </p>
+            <div class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+              <a class="quiet-link" href="https://github.com/aDragon0707" target="_blank" rel="noopener noreferrer" data-i18n="contact.github">GitHub：aDragon0707</a>
+              <a class="quiet-link" href="mailto:adragon@alantern.com" data-i18n="contact.email">Email：adragon@alantern.com</a>
+              <a class="quiet-link" href="https://adragons-portfolio.vercel.app/zh" target="_blank" rel="noopener noreferrer" data-i18n="contact.publicUrlLabel">公开网站</a>
+            </div>
+            <p class="mt-10 text-xs tracking-wide text-[color:var(--faint)]">
+              © <span id="year"></span> <span data-i18n="contact.footer">个人技术作品集。使用 HTML5、Tailwind CSS 和 Vanilla JavaScript 构建。</span>
+            </p>
+            </div>
+
+            <a class="qr-card" href="https://adragons-portfolio.vercel.app/zh" target="_blank" rel="noopener noreferrer">
+              <img src="public/assets/portfolio-qr.svg" alt="扫码打开这个网站" data-i18n-alt="contact.qrLabel" />
+              <span>
+                <span class="block text-sm font-semibold text-[color:var(--ink)]" data-i18n="contact.qrLabel">扫码打开这个网站</span>
+                <span class="mt-2 block text-xs leading-5 text-[color:var(--muted)]">https://adragons-portfolio.vercel.app/zh</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <button id="annotateEntry" type="button" class="annotate-entry" data-annotate-ui hidden>批注 / Annotate</button>
+    <div id="annotateToolbar" class="annotate-toolbar" data-annotate-ui hidden>
+      <span>点击页面任意元素来记录问题位置。Esc 退出。</span>
+      <button id="annotateCancel" type="button">退出</button>
+    </div>
+    <div id="annotateHover" class="ui-annotate-hover" data-annotate-ui hidden></div>
+    <div id="annotatePanel" class="annotate-panel" data-annotate-ui hidden>
+      <div class="annotate-panel-head">
+        <strong>这处哪里不舒服？</strong>
+        <button id="annotateClose" type="button">关闭</button>
+      </div>
+      <p id="annotateSelector"></p>
+      <textarea id="annotateComment" rows="4" placeholder="例如：这一块太挤、标题没重点、按钮不明显、移动端看着乱..."></textarea>
+      <button id="annotateCopy" type="button" class="button-link primary-action">复制批注给 Codex</button>
+      <pre id="annotateFallback" class="annotate-fallback" hidden></pre>
+    </div>
+
+    <script>
+      const dictionaries = {
+        zh: {
+          nav: { about: "关于", projects: "项目", systems: "系统", notes: "思考", contact: "联系" },
+          hero: {
+            tagline: "个人 AI 系统构建者",
+            title: "我在构建 AI 一人公司的操作系统。",
+            introTitle: "把一个人的学习、审计和 Agent 协作，组织成可持续产能。",
+            description: "从学习复盘、平台审计到多 Agent 协作，我把 AI 变成可记忆、可审计、可交接的生产系统，让一个人拥有小团队级别的执行力。",
+            ctaProjects: "查看项目",
+            ctaGithub: "打开 GitHub",
+          },
+          artifact: {
+            caption: "Solo AI Company OS，作为个人操作系统工作的公开锚点。",
+          },
+          about: {
+            title: "一人公司的底层命题",
+            body: "我在围绕一个问题搭建个人实验室：AI 时代，一个人如何把阅读、学习、审计、写作和 Agent 协作组织成稳定产能，而不是一次次聊天窗口里的短期兴奋？我反复测试的答案是长期记忆、证据回执、可复查决策，以及持续迭代的学习循环。",
+            skillsLabel: "工作材料",
+            skills: ["AI 一人公司 OS", "Agent 审计协议", "证据工作流", "学习复盘系统", "证据约束工作流", "Python 自动化"],
+          },
+          projects: {
+            eyebrow: "项目索引",
+            subtitle: "从学习到审计，再到 Agent 协作",
+            title: "六个 AI 人效系统",
+            description: "它们不是零散项目，而是同一条路线：让一个人借助 AI 保存思考、组织行动、验证结果，并在失败之后继续迭代。公开项目给出仓库或网页，私有系统只展示能力边界。",
+            items: [
+              {
+                title: "Solo AI Company OS",
+                category: "AI 公司记忆系统",
+                status: "公开 GitHub",
+                description: "一个用 Markdown 协调 AI 员工的操作系统，包含创始人决策、持久 worklog、handoff、仪表盘和可复用技能。这是当前公开锚点项目。",
+                tags: ["Markdown", "AI 员工", "交接", "Obsidian"],
+                href: "https://github.com/aDragon0707/Solo-AI-Company-OS",
+                label: "查看 GitHub",
+                links: [],
+                public: true,
+              },
+              {
+                title: "SACP / AgentOps Doctor",
+                category: "AI Agent 审计协议",
+                status: "公开 GitHub",
+                description: "一个面向 AI Agent 工作回执的状态感知协作协议，并提供 AgentOps Doctor 参考工具，用来检查完成声明、缺失证据、责任归属和人工决策边界。",
+                tags: ["协议", "工作回执", "AgentOps", "AI 安全"],
+                href: "https://github.com/aDragon0707/sacp",
+                label: "查看 GitHub",
+                links: [],
+                public: true,
+              },
+              {
+                title: "Reading Reflection OS",
+                category: "学习操作系统",
+                status: "案例预览",
+                description: "一个阅读复盘知识系统，把阅读输入转化成结构化反思、可复用洞察和长期创始人学习循环。",
+                tags: ["阅读复盘", "学习循环", "知识库"],
+                href: "#contact",
+                label: "案例预览",
+                links: [],
+                public: false,
+              },
+              {
+                title: "ShadowBuyer Booking Audit",
+                category: "研究级审计系统",
+                status: "公开 demo package",
+                description: "一个面向 OTA 价格透明度的受控审计系统，覆盖重复采样、截图锚点、证据 manifest、哈希引用和明确的 claim boundary。公开包只放脱敏样例和方法论摘要，不暴露原始证据或执行细节。",
+                tags: ["Python", "OTA 审计", "脱敏证据", "统计复核"],
+                href: "assets/shadowbuyer/ShadowBuyer_Executive_Summary_2026.pdf",
+                label: "打开 Executive Summary",
+                links: [
+                  { label: "英文 summary", href: "assets/shadowbuyer/ShadowBuyer_Executive_Summary_EN_2026.pdf" },
+                  { label: "脱敏审计样例", href: "assets/shadowbuyer/ShadowBuyer_One_Page_Redacted_Audit_Sample.pdf" },
+                  { label: "Rate parity 样例", href: "assets/shadowbuyer/Sample_Audit_Report_Rate_Parity_Verification.pdf" },
+                ],
+                public: true,
+              },
+              {
+                title: "雅思助手",
+                category: "AI 学习工具",
+                status: "已上线网站",
+                description: "一个已经上线的雅思学习助手，支持阅读复盘、写作教学、OCR 辅助材料处理和复盘卡片沉淀。",
+                tags: ["Web 应用", "OCR", "写作教练", "复盘卡"],
+                href: "https://ielts.alantern.com",
+                label: "打开网站",
+                links: [],
+                public: true,
+              },
+              {
+                title: "Socrates Focus",
+                category: "深度学习系统",
+                status: "案例预览",
+                description: "一个证据约束型思考教练，帮助用户更好地推理，把观点绑定到来源材料，并保存有用的学习轨迹。",
+                tags: ["FastAPI", "React", "GraphRAG", "证据账本"],
+                href: "#contact",
+                label: "案例预览",
+                links: [],
+                public: false,
+              },
+            ],
+          },
+          systems: {
+            title: "一人公司原则",
+            subtitle: "不是把 AI 当聊天工具，而是把它组织成可以长期运行、可以复查、可以交接的工作系统。",
+            items: [
+              { title: "问题先于答案", desc: "AI 不应该急着喂答案，而应该帮助人定义问题、拆解问题，并判断这个问题是否值得解决。" },
+              { title: "记忆先于速度", desc: "把分散的模型对话转化成决策、worklog、handoff 和可复查的系统记忆。" },
+              { title: "证据先于自信", desc: "让系统里的判断绑定到来源材料、截图、manifest 或结构化轨迹，而不是停留在口头结论。" },
+              { title: "回执先于宣称", desc: "Agent 不应该只说完成了，而应该留下做了什么、没做什么、证据在哪里、哪些地方需要人来决策。" },
+            ],
+          },
+          notes: {
+            title: "思考",
+            subtitle: "这里放个人思考、构建笔记，以及这些系统继续演化时留下的判断。当前先保留这一篇完整长文。",
+            viewAll: "阅读全部思考",
+            adminLabel: "打开写作台",
+            adminHint: "新的文章可以从私人的写作台发布。",
+            items: [
+              { date: "2026-05-08", title: "从受益者到反哺者：我如何从 0 开始，用 AI 做出六个系统", href: "https://adragons-portfolio.vercel.app/zh/devlog/2026-05-08-from-beneficiary-to-builder" },
+            ],
+          },
+          contact: {
+            title: "联系",
+            body: "你可以通过 GitHub 或邮箱联系我。二维码会打开公开作品集页面。",
+            github: "GitHub：aDragon0707",
+            email: "Email：adragon@alantern.com",
+            publicUrlLabel: "公开网站",
+            qrLabel: "扫码打开这个网站",
+            footer: "个人技术作品集。使用 HTML5、Tailwind CSS 和 Vanilla JavaScript 构建。",
+          },
+        },
+        en: {
+          nav: { about: "About", projects: "Projects", systems: "Systems", notes: "Notes", contact: "Contact" },
+          hero: {
+            tagline: "Super Individual / Solo Company / AI Leverage Systems",
+            title: "I build operating systems for the AI solo company.",
+            introTitle: "Turning learning, audits, and agent collaboration into durable solo-builder capacity.",
+            description: "From learning reviews and platform audits to multi-agent collaboration, I turn AI into durable production systems with memory, evidence, and handoff, so one person can operate with small-team leverage.",
+            ctaProjects: "View Projects",
+            ctaGithub: "Open GitHub",
+          },
+          artifact: {
+            caption: "Solo AI Company OS, shown as the public anchor artifact for the broader personal operating-system work.",
+          },
+          about: {
+            title: "Solo Company Thesis",
+            body: "I am building a personal lab around one question: in the AI era, how can one person turn reading, learning, audits, writing, and agent collaboration into stable production capacity instead of short-lived excitement inside chat windows? The answer I keep testing is long-term memory, evidence receipts, reviewable decisions, and learning loops that keep improving.",
+            skillsLabel: "Working Materials",
+            skills: ["AI solo company OS", "Agent audit protocols", "Evidence workflows", "Learning review systems", "Evidence-constrained work", "Python automation"],
+          },
+          projects: {
+            eyebrow: "Project Index",
+            subtitle: "From learning to audits to agent collaboration",
+            title: "Six AI Leverage Systems",
+            description: "They are not scattered projects. They are one route: helping a solo builder preserve thought, organize action, verify results, and keep iterating after failure. Public work links to repositories or live products; private systems show capability boundaries only.",
+            items: [
+              {
+                title: "Solo AI Company OS",
+                category: "AI company memory",
+                status: "Public GitHub",
+                description: "A Markdown operating system for coordinating AI workers with founder decisions, durable worklogs, handoffs, dashboards, and reusable skills. This is the public anchor project.",
+                tags: ["Markdown", "AI workers", "Handoffs", "Obsidian"],
+                href: "https://github.com/aDragon0707/Solo-AI-Company-OS",
+                label: "View GitHub",
+                links: [],
+                public: true,
+              },
+              {
+                title: "SACP / AgentOps Doctor",
+                category: "AI agent audit protocol",
+                status: "Public GitHub",
+                description: "A state-aware collaboration protocol for AI agent work receipts, with a reference doctor that checks claims, missing evidence, ownership, and decision boundaries.",
+                tags: ["Protocol", "Receipts", "AgentOps", "AI safety"],
+                href: "https://github.com/aDragon0707/sacp",
+                label: "View GitHub",
+                links: [],
+                public: true,
+              },
+              {
+                title: "Reading Reflection OS",
+                category: "Learning operating system",
+                status: "Case preview",
+                description: "A companion knowledge system for turning reading into structured reflection, reusable insight, and long-term founder learning loops.",
+                tags: ["Reflection", "Learning loops", "Knowledge base"],
+                href: "#contact",
+                label: "Case Notes",
+                links: [],
+                public: false,
+              },
+              {
+                title: "ShadowBuyer Booking Audit",
+                category: "Research-grade audit",
+                status: "Public demo package",
+                description: "A controlled OTA price-transparency audit system with repeated sampling, screenshot anchors, evidence manifests, hash references, and explicit claim boundaries. The public package includes a redacted sample and methodology-facing summary.",
+                tags: ["Python", "OTA audit", "Redacted evidence", "Statistics"],
+                href: "assets/shadowbuyer/ShadowBuyer_Executive_Summary_EN_2026.pdf",
+                label: "Open Executive Summary",
+                links: [
+                  { label: "Chinese summary", href: "assets/shadowbuyer/ShadowBuyer_Executive_Summary_2026.pdf" },
+                  { label: "Redacted audit sample", href: "assets/shadowbuyer/ShadowBuyer_One_Page_Redacted_Audit_Sample.pdf" },
+                  { label: "Rate parity sample", href: "assets/shadowbuyer/Sample_Audit_Report_Rate_Parity_Verification.pdf" },
+                ],
+                public: true,
+              },
+              {
+                title: "IELTS Assistant",
+                category: "AI learning tool",
+                status: "Live website",
+                description: "A live IELTS study assistant for reading review, writing coaching, OCR-assisted material processing, and review-card based learning.",
+                tags: ["Web app", "OCR", "Writing coach", "Study cards"],
+                href: "https://ielts.alantern.com",
+                label: "Open Website",
+                links: [],
+                public: true,
+              },
+              {
+                title: "Socrates Focus",
+                category: "Deep learning system",
+                status: "Case preview",
+                description: "An evidence-constrained thinking coach that helps users reason better, ground claims in source material, and preserve useful learning traces.",
+                tags: ["FastAPI", "React", "GraphRAG", "Evidence ledger"],
+                href: "#contact",
+                label: "Case Notes",
+                links: [],
+                public: false,
+              },
+            ],
+          },
+          systems: {
+            title: "Solo Company Principles",
+            subtitle: "I do not treat AI as a chat tool. I organize it into long-running work systems that can be reviewed, audited, and handed off.",
+            items: [
+              { title: "Problem before answer", desc: "AI should help define and decompose the problem, then test whether it is worth solving, before rushing to produce an answer." },
+              { title: "Memory before momentum", desc: "Turning scattered model chats into decisions, worklogs, handoffs, and reviewable memory." },
+              { title: "Evidence before confidence", desc: "Designing systems that keep claims tied to source material, screenshots, manifests, or structured traces." },
+              { title: "Receipt before claim", desc: "An agent should not merely say it finished. It should show what it did, what it did not do, where the evidence is, and what still needs human judgment." },
+            ],
+          },
+          notes: {
+            title: "Notes",
+            subtitle: "Personal thinking, build notes, and lessons from the systems as they evolve. For now, this section keeps one anchor essay.",
+            viewAll: "Read all notes",
+            adminLabel: "Open writing desk",
+            adminHint: "Draft new notes from the private writing desk.",
+            items: [
+              { date: "2026-05-08", title: "From Beneficiary to Builder: Six AI Systems from Zero", href: "https://adragons-portfolio.vercel.app/en/devlog/2026-05-08-from-beneficiary-to-builder" },
+            ],
+          },
+          contact: {
+            title: "Contact",
+            body: "You can reach me through GitHub or email. The QR code opens the public portfolio.",
+            github: "GitHub: aDragon0707",
+            email: "Email: adragon@alantern.com",
+            publicUrlLabel: "Public site",
+            qrLabel: "Scan to open this site",
+            footer: "Personal technology portfolio. Built with HTML5, Tailwind CSS, and Vanilla JavaScript.",
+          },
+        },
+      };
+
+      function getNestedValue(source, path) {
+        return path.split(".").reduce((value, key) => value?.[key], source);
+      }
+
+      function renderProjectIndex(projects) {
+        document.getElementById("projectIndex").innerHTML = projects
+          .map(
+            (project, index) => `
+              <a href="#projects" class="group grid grid-cols-[2rem_minmax(0,1fr)] gap-3 border-t border-[color:var(--line)] py-3 text-sm no-underline last:border-b">
+                <span class="text-[color:var(--faint)]">${String(index + 1).padStart(2, "0")}</span>
+                <span>
+                  <span class="block font-semibold text-[color:var(--ink)] group-hover:text-[color:var(--blue)]">${project.title}</span>
+                  <span class="mt-0.5 block text-[color:var(--muted)]">${project.category}</span>
+                </span>
+              </a>`
+          )
+          .join("");
+      }
+
+      function renderProjectCard(project, featured) {
+        const isExternal = !project.href.startsWith("#");
+        const tone = project.public ? "public" : "preview";
+        const targetAttrs = isExternal ? 'target="_blank" rel="noopener noreferrer"' : "";
+        const titleSize = featured ? "text-3xl md:text-4xl" : "text-2xl";
+
+        return `
+          <article class="project-card ${featured ? "is-featured" : ""}">
+            <div>
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="status-chip" data-tone="${tone}">${project.status}</span>
+                <span class="text-sm text-[color:var(--muted)]">${project.category}</span>
+              </div>
+              <h3 class="project-title mt-3 ${titleSize} font-semibold text-[color:var(--ink)]">${project.title}</h3>
+            </div>
+            <div>
+              <p class="text-pretty text-base leading-7 text-[color:var(--muted)]">${project.description}</p>
+              <div class="mt-4 flex flex-wrap gap-x-4 gap-y-2">
+                ${project.tags.map((tag) => `<span class="tag-chip">${tag}</span>`).join("")}
+              </div>
+              <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
+                <a href="${project.href}" ${targetAttrs} class="quiet-link inline-flex text-sm">${project.label} -&gt;</a>
+                ${(project.links || [])
+                  .map(
+                    (link) =>
+                      `<a href="${link.href}" target="_blank" rel="noopener noreferrer" class="evidence-link text-sm">${link.label}</a>`
+                  )
+                  .join("")}
+              </div>
+            </div>
+          </article>`;
+      }
+
+      function renderProjectCards(projects) {
+        const [featured, ...supporting] = projects;
+        document.getElementById("projectCards").innerHTML = `
+          ${renderProjectCard(featured, true)}
+          <div>
+            ${supporting.map((project) => renderProjectCard(project, false)).join("")}
+          </div>`;
+      }
+
+      function renderSkills(skills) {
+        document.getElementById("skills").innerHTML = skills
+          .map((skill) => `<span class="tag-chip">${skill}</span>`)
+          .join("");
+      }
+
+      function renderSystems(items) {
+        document.getElementById("systemsGrid").innerHTML = items
+          .map(
+            (item, index) => `
+              <div class="principle-row">
+                <span class="text-sm text-[color:var(--faint)]">${String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3 class="text-lg font-semibold text-[color:var(--ink)]">${item.title}</h3>
+                  <p class="mt-2 max-w-2xl text-sm leading-7 text-[color:var(--muted)]">${item.desc}</p>
+                </div>
+              </div>`
+          )
+          .join("");
+      }
+
+      function renderNotes(items) {
+        document.getElementById("notesList").innerHTML = items
+          .map(
+            (item) => `
+              <a href="${item.href}" class="note-row group">
+                <time datetime="${item.date}">${item.date}</time>
+                <span class="group-hover:text-[color:var(--blue)]">${item.title}</span>
+              </a>`
+          )
+          .join("");
+      }
+
+      let currentLang = "zh";
+
+      function applyLanguage(lang) {
+        currentLang = lang;
+        const dict = dictionaries[lang];
+        document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+        document.getElementById("pageRoot").className = lang === "zh" ? "site-shell cjk-safe" : "site-shell";
+        document.getElementById("langToggle").textContent = lang === "zh" ? "English" : "中文";
+        document.querySelectorAll("[data-i18n]").forEach((node) => {
+          const value = getNestedValue(dict, node.dataset.i18n);
+          if (typeof value === "string") node.textContent = value;
+        });
+        document.querySelectorAll("[data-i18n-alt]").forEach((node) => {
+          const value = getNestedValue(dict, node.dataset.i18nAlt);
+          if (typeof value === "string") node.setAttribute("alt", value);
+        });
+        renderProjectIndex(dict.projects.items);
+        renderProjectCards(dict.projects.items);
+        renderSkills(dict.about.skills);
+        renderSystems(dict.systems.items);
+        renderNotes(dict.notes.items);
+      }
+
+      document.addEventListener("click", (event) => {
+        const anchor = event.target.closest('a[href^="#"]');
+        if (!anchor) return;
+        const href = anchor.getAttribute("href");
+        if (!href || href === "#") return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        event.preventDefault();
+
+        const navOffset = 72;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - navOffset;
+        window.scrollTo({ top, behavior: "smooth" });
+      });
+
+      document.getElementById("langToggle").addEventListener("click", () => {
+        applyLanguage(currentLang === "zh" ? "en" : "zh");
+      });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+      applyLanguage("zh");
+
+      (() => {
+        const annotateEnabled =
+          new URLSearchParams(window.location.search).get("annotate") === "1" ||
+          window.localStorage.getItem("adgAnnotateMode") === "1";
+        if (!annotateEnabled) return;
+        window.localStorage.setItem("adgAnnotateMode", "1");
+
+        const entry = document.getElementById("annotateEntry");
+        const toolbar = document.getElementById("annotateToolbar");
+        const cancel = document.getElementById("annotateCancel");
+        const hover = document.getElementById("annotateHover");
+        const panel = document.getElementById("annotatePanel");
+        const close = document.getElementById("annotateClose");
+        const selectorNode = document.getElementById("annotateSelector");
+        const comment = document.getElementById("annotateComment");
+        const copy = document.getElementById("annotateCopy");
+        const fallback = document.getElementById("annotateFallback");
+        let active = false;
+        let targetInfo = null;
+        entry.hidden = false;
+        toolbar.hidden = false;
+        hover.hidden = false;
+        panel.hidden = false;
+
+        function setActive(next) {
+          active = next;
+          entry.classList.toggle("is-active", active);
+          toolbar.classList.toggle("is-visible", active);
+          if (!active) hover.style.display = "none";
+        }
+
+        function compactText(value) {
+          return String(value || "").replace(/\s+/g, " ").trim().slice(0, 240);
+        }
+
+        function selectorFor(element) {
+          if (element.id) return `#${CSS.escape(element.id)}`;
+          const parts = [];
+          let current = element;
+          while (current && current !== document.body && parts.length < 5) {
+            const tag = current.tagName.toLowerCase();
+            const classes = Array.from(current.classList)
+              .filter((name) => !name.startsWith("hover:") && !name.startsWith("md:"))
+              .slice(0, 2)
+              .map((name) => `.${CSS.escape(name)}`)
+              .join("");
+            const parent = current.parentElement;
+            const siblings = parent ? Array.from(parent.children).filter((child) => child.tagName === current.tagName) : [];
+            const nth = siblings.length > 1 && parent ? `:nth-of-type(${siblings.indexOf(current) + 1})` : "";
+            parts.unshift(`${tag}${classes}${nth}`);
+            current = parent;
+          }
+          return parts.join(" > ");
+        }
+
+        function ancestryFor(element) {
+          const parts = [];
+          let current = element;
+          while (current && current !== document.body && parts.length < 5) {
+            parts.unshift(`${current.tagName.toLowerCase()}${current.id ? `#${current.id}` : ""}${current.classList.length ? `.${Array.from(current.classList).slice(0, 2).join(".")}` : ""}`);
+            current = current.parentElement;
+          }
+          return parts.join(" > ");
+        }
+
+        function buildInfo(element, event) {
+          const rect = element.getBoundingClientRect();
+          return {
+            url: window.location.href,
+            title: document.title,
+            viewport: `${window.innerWidth}x${window.innerHeight}`,
+            selector: selectorFor(element),
+            tag: element.tagName.toLowerCase(),
+            id: element.id,
+            classes: Array.from(element.classList).join(" "),
+            role: element.getAttribute("role") || "",
+            text: compactText(element.innerText || element.textContent || ""),
+            rect: `${Math.round(rect.left)},${Math.round(rect.top)},${Math.round(rect.width)}x${Math.round(rect.height)}`,
+            click: `${Math.round(event.clientX)},${Math.round(event.clientY)}`,
+            ancestry: ancestryFor(element),
+          };
+        }
+
+        function promptFor() {
+          if (!targetInfo) return "";
+          return [
+            "请根据这个 UI 批注修改网站：",
+            "",
+            `用户反馈：${comment.value || "（请在这里补充具体不满意点）"}`,
+            "",
+            `URL：${targetInfo.url}`,
+            `页面标题：${targetInfo.title}`,
+            `视口：${targetInfo.viewport}`,
+            `点击坐标：${targetInfo.click}`,
+            `元素：${targetInfo.tag}`,
+            `selector：${targetInfo.selector}`,
+            `id：${targetInfo.id || "无"}`,
+            `class：${targetInfo.classes || "无"}`,
+            `role：${targetInfo.role || "无"}`,
+            `文本：${targetInfo.text || "无"}`,
+            `位置尺寸：${targetInfo.rect}`,
+            `DOM 上下文：${targetInfo.ancestry}`,
+          ].join("\n");
+        }
+
+        entry.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          panel.classList.remove("is-visible");
+          fallback.hidden = true;
+          fallback.textContent = "";
+          setActive(!active);
+        });
+        cancel.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          setActive(false);
+        });
+        close.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          panel.classList.remove("is-visible");
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") setActive(false);
+        }, true);
+
+        document.addEventListener("mousemove", (event) => {
+          if (!active) return;
+          const element = event.target instanceof HTMLElement ? event.target : null;
+          if (!element || element.closest("[data-annotate-ui]")) {
+            hover.style.display = "none";
+            return;
+          }
+          const rect = element.getBoundingClientRect();
+          hover.style.display = "block";
+          hover.style.left = `${rect.left}px`;
+          hover.style.top = `${rect.top}px`;
+          hover.style.width = `${rect.width}px`;
+          hover.style.height = `${rect.height}px`;
+        }, true);
+
+        document.addEventListener("click", (event) => {
+          if (!active) return;
+          const element = event.target instanceof HTMLElement ? event.target : null;
+          if (!element || element.closest("[data-annotate-ui]")) return;
+          event.preventDefault();
+          event.stopPropagation();
+          event.stopImmediatePropagation();
+          targetInfo = buildInfo(element, event);
+          selectorNode.textContent = targetInfo.selector;
+          comment.value = "";
+          copy.textContent = "复制批注给 Codex";
+          fallback.hidden = true;
+          fallback.textContent = "";
+          panel.classList.add("is-visible");
+          setActive(false);
+          comment.focus();
+        }, true);
+
+        copy.addEventListener("click", async () => {
+          const prompt = promptFor();
+          if (!prompt) return;
+          try {
+            await navigator.clipboard.writeText(prompt);
+            copy.textContent = "已复制，可以粘给 Codex";
+          } catch {
+            copy.textContent = "复制失败，请手动选中内容";
+            fallback.textContent = prompt;
+            fallback.hidden = false;
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

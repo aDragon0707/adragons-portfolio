@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">Solo-AI-Company-OS system map</title>
+  <desc id="desc">A visual map showing founder decisions, AI employees, worklogs, skills, dashboards, and learning as a reusable collaboration loop.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="54%" stop-color="#17313b"/>
+      <stop offset="100%" stop-color="#203227"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f4c95d"/>
+    </marker>
+    <style>
+      .title { font: 800 42px Inter, Segoe UI, Arial, sans-serif; fill: #fff; }
+      .subtitle { font: 600 19px Inter, Segoe UI, Arial, sans-serif; fill: #dce7e5; }
+      .label { font: 800 25px Inter, Segoe UI, Arial, sans-serif; fill: #fff; }
+      .small { font: 550 17px Inter, Segoe UI, Arial, sans-serif; fill: #dce7e5; }
+      .tiny { font: 500 15px Inter, Segoe UI, Arial, sans-serif; fill: #adc0c0; }
+      .rule { font: 750 20px Inter, Segoe UI, Arial, sans-serif; fill: #f4c95d; }
+      .box { fill: rgba(255,255,255,0.08); stroke: rgba(255,255,255,0.24); stroke-width: 2; rx: 16; }
+      .core { fill: rgba(244,201,93,0.18); stroke: #f4c95d; stroke-width: 3; rx: 22; }
+      .skill { fill: rgba(101,209,198,0.16); stroke: #65d1c6; stroke-width: 3; rx: 22; }
+      .line { stroke: #f4c95d; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .softLine { stroke: #65d1c6; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg)"/>
+  <circle cx="1020" cy="120" r="145" fill="#f4c95d" opacity="0.08"/>
+  <circle cx="170" cy="585" r="160" fill="#65d1c6" opacity="0.09"/>
+
+  <text x="70" y="78" class="title">Solo-AI-Company-OS</text>
+  <text x="72" y="116" class="subtitle">Human decides. AI executes. Worklogs capture experience. Skills make it reusable.</text>
+
+  <rect x="70" y="238" width="260" height="128" class="core"/>
+  <text x="200" y="286" text-anchor="middle" class="label">Founder</text>
+  <text x="200" y="320" text-anchor="middle" class="small">decision authority</text>
+  <text x="200" y="346" text-anchor="middle" class="tiny">inbox, decisions, retrospectives</text>
+
+  <rect x="465" y="168" width="280" height="128" class="box"/>
+  <text x="605" y="216" text-anchor="middle" class="label">AI Employees</text>
+  <text x="605" y="250" text-anchor="middle" class="small">working identities</text>
+  <text x="605" y="276" text-anchor="middle" class="tiny">roles, prompts, boundaries</text>
+
+  <rect x="870" y="238" width="260" height="128" class="box"/>
+  <text x="1000" y="286" text-anchor="middle" class="label">Worklogs</text>
+  <text x="1000" y="320" text-anchor="middle" class="small">handoff-ready state</text>
+  <text x="1000" y="346" text-anchor="middle" class="tiny">what happened, gaps, next owner</text>
+
+  <rect x="465" y="408" width="280" height="128" class="skill"/>
+  <text x="605" y="456" text-anchor="middle" class="label">Skills</text>
+  <text x="605" y="490" text-anchor="middle" class="small">reusable patterns</text>
+  <text x="605" y="516" text-anchor="middle" class="tiny">library and agent-skill matrix</text>
+
+  <rect x="70" y="468" width="260" height="102" class="box"/>
+  <text x="200" y="510" text-anchor="middle" class="label">Dashboards</text>
+  <text x="200" y="543" text-anchor="middle" class="tiny">state summaries, not authority</text>
+
+  <rect x="870" y="468" width="260" height="102" class="box"/>
+  <text x="1000" y="510" text-anchor="middle" class="label">Learning Lab</text>
+  <text x="1000" y="543" text-anchor="middle" class="tiny">intent first, code second</text>
+
+  <rect x="375" y="590" width="460" height="56" class="box"/>
+  <text x="605" y="625" text-anchor="middle" class="rule">Plain Markdown, durable memory, no hidden platform</text>
+
+  <path d="M330 286 C370 248 415 232 465 232" class="line"/>
+  <path d="M745 232 C795 232 835 252 870 286" class="line"/>
+  <path d="M1000 366 C970 430 835 472 745 472" class="softLine"/>
+  <path d="M465 472 C385 454 330 395 300 352" class="softLine"/>
+  <path d="M605 408 L605 296" class="softLine"/>
+  <path d="M330 520 C390 530 430 520 465 496" class="softLine"/>
+  <path d="M745 496 C790 520 830 530 870 520" class="softLine"/>
+</svg>

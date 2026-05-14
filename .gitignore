@@ -1,0 +1,7 @@
+.vercel
+.next
+node_modules
+.env.local
+tsconfig.tsbuildinfo
+ip-refresh-preview*.html
+ip-refresh-preview*.png

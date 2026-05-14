@@ -1,0 +1,203 @@
+import type { Dictionary } from "./en";
+
+export const zh: Dictionary = {
+  nav: {
+    logo: "ADRAGON",
+    about: "关于",
+    projects: "项目",
+    services: "系统",
+    contact: "联系",
+    devlog: "思考",
+    admin: "管理",
+    lang_switch: "English",
+  },
+  home: {
+    hero: {
+      tagline: "超级个体 / 一人公司 / AI 人效系统",
+      title: "我在构建 AI 一人公司的操作系统。",
+      intro_title: "把一个人的学习、审计和 Agent 协作，组织成可持续产能。",
+      description:
+        "从学习复盘、平台审计到多 Agent 协作，我把 AI 变成可记忆、可审计、可交接的生产系统，让一个人拥有小团队级别的执行力。",
+      cta_projects: "查看项目",
+      cta_contact: "打开 GitHub",
+      github_href: "https://github.com/aDragon0707",
+    },
+    about: {
+      title: "一人公司的底层命题",
+      body: "我在围绕一个问题搭建个人实验室：AI 时代，一个人如何把阅读、学习、审计、写作和 Agent 协作组织成稳定产能，而不是一次次聊天窗口里的短期兴奋？我反复测试的答案是长期记忆、证据回执、可复查决策，以及持续迭代的学习循环。",
+      skills_label: "工作材料",
+      skills: [
+        "AI 一人公司 OS",
+        "Agent 审计协议",
+        "证据工作流",
+        "学习复盘系统",
+        "证据约束工作流",
+        "Python 自动化",
+      ],
+    },
+    projects: {
+      title: "六个 AI 人效系统",
+      subtitle: "从学习到审计，再到 Agent 协作",
+      eyebrow: "项目索引",
+      description:
+        "它们不是零散项目，而是同一条路线：让一个人借助 AI 保存思考、组织行动、验证结果，并在失败之后继续迭代。公开项目给出仓库或网页，私有系统只展示能力边界。",
+      public_label: "公开",
+      preview_label: "预览",
+      items: [
+        {
+          title: "Solo AI Company OS",
+          category: "AI 公司记忆系统",
+          status: "公开 GitHub",
+          description:
+            "一个用 Markdown 协调 AI 员工的操作系统，包含创始人决策、持久 worklog、handoff、仪表盘和可复用技能。这是当前公开锚点项目。",
+          tags: ["Markdown", "AI 员工", "交接", "Obsidian"],
+          primaryHref: "https://github.com/aDragon0707/Solo-AI-Company-OS",
+          primaryLabel: "查看 GitHub",
+          secondaryLinks: [],
+          isPublic: true,
+        },
+        {
+          title: "SACP / AgentOps Doctor",
+          category: "AI Agent 审计协议",
+          status: "公开 GitHub",
+          description:
+            "一个面向 AI Agent 工作回执的状态感知协作协议，并提供 AgentOps Doctor 参考工具，用来检查完成声明、缺失证据、责任归属和人工决策边界。",
+          tags: ["协议", "工作回执", "AgentOps", "AI 安全"],
+          primaryHref: "https://github.com/aDragon0707/sacp",
+          primaryLabel: "查看 GitHub",
+          secondaryLinks: [],
+          isPublic: true,
+        },
+        {
+          title: "Reading Reflection OS",
+          category: "学习操作系统",
+          status: "案例预览",
+          description:
+            "一个阅读复盘知识系统，把阅读输入转化成结构化反思、可复用洞察和长期创始人学习循环。",
+          tags: ["阅读复盘", "学习循环", "知识库"],
+          primaryHref: "#contact",
+          primaryLabel: "案例预览",
+          secondaryLinks: [],
+          isPublic: false,
+        },
+        {
+          title: "ShadowBuyer Booking Audit",
+          category: "研究级审计系统",
+          status: "公开 demo package",
+          description:
+            "一个面向 OTA 价格透明度的受控审计系统，覆盖重复采样、截图锚点、证据 manifest、哈希引用和明确的 claim boundary。公开包只放脱敏样例和方法论摘要，不暴露原始证据或执行细节。",
+          tags: ["Python", "OTA 审计", "脱敏证据", "统计复核"],
+          primaryHref: "/assets/shadowbuyer/ShadowBuyer_Executive_Summary_2026.pdf",
+          primaryLabel: "打开 Executive Summary",
+          secondaryLinks: [
+            {
+              label: "英文 summary",
+              href: "/assets/shadowbuyer/ShadowBuyer_Executive_Summary_EN_2026.pdf",
+            },
+            {
+              label: "脱敏审计样例",
+              href: "/assets/shadowbuyer/ShadowBuyer_One_Page_Redacted_Audit_Sample.pdf",
+            },
+            {
+              label: "Rate parity 样例",
+              href: "/assets/shadowbuyer/Sample_Audit_Report_Rate_Parity_Verification.pdf",
+            },
+          ],
+          isPublic: true,
+        },
+        {
+          title: "雅思助手",
+          category: "AI 学习工具",
+          status: "已上线网站",
+          description:
+            "一个已经上线的雅思学习助手，支持阅读复盘、写作教学、OCR 辅助材料处理和复盘卡片沉淀。",
+          tags: ["Web 应用", "OCR", "写作教练", "复盘卡"],
+          primaryHref: "https://ielts.alantern.com",
+          primaryLabel: "打开网站",
+          secondaryLinks: [],
+          isPublic: true,
+        },
+        {
+          title: "Socrates Focus",
+          category: "深度学习系统",
+          status: "案例预览",
+          description:
+            "一个证据约束型思考教练，帮助用户更好地推理，把观点绑定到来源材料，并保存有用的学习轨迹。",
+          tags: ["FastAPI", "React", "GraphRAG", "证据账本"],
+          primaryHref: "#contact",
+          primaryLabel: "案例预览",
+          secondaryLinks: [],
+          isPublic: false,
+        },
+      ],
+    },
+    services: {
+      title: "一人公司原则",
+      subtitle: "不是把 AI 当聊天工具，而是把它组织成可以长期运行、可以复查、可以交接的工作系统。",
+      items: [
+        {
+          title: "问题先于答案",
+          desc: "AI 不应该急着喂答案，而应该帮助人定义问题、拆解问题，并判断这个问题是否值得解决。",
+        },
+        {
+          title: "记忆先于速度",
+          desc: "把分散的模型对话转化成决策、worklog、handoff 和可复查的系统记忆。",
+        },
+        {
+          title: "证据先于自信",
+          desc: "让系统里的判断绑定到来源材料、截图、manifest 或结构化轨迹，而不是停留在口头结论。",
+        },
+        {
+          title: "回执先于宣称",
+          desc: "Agent 不应该只说完成了，而应该留下做了什么、没做什么、证据在哪里、哪些地方需要人来决策。",
+        },
+      ],
+    },
+    notes: {
+      title: "思考",
+      subtitle: "这里放个人思考、构建笔记，以及这些系统继续演化时留下的判断。当前先保留这一篇完整长文。",
+      view_all: "阅读全部思考",
+      empty: "还没有公开思考。",
+      admin_hint: "新的文章可以从私人的写作台发布。",
+      admin_label: "打开写作台",
+    },
+    contact: {
+      title: "联系",
+      body: "你可以通过 GitHub 或邮箱联系我。二维码会打开公开作品集页面。",
+      github: "GitHub：aDragon0707",
+      github_href: "https://github.com/aDragon0707",
+      email_label: "Email：adragon@alantern.com",
+      email_href: "mailto:adragon@alantern.com",
+      public_url_label: "公开网站",
+      public_url: "https://adragons-portfolio.vercel.app/zh",
+      qr_label: "扫码打开这个网站",
+      footer: "个人技术作品集。使用 Next.js 和 Tailwind CSS 构建。",
+    },
+  },
+  devlog: {
+    path: "思考",
+    title: "思考",
+    subtitle: "个人思考 / 构建笔记 / 系统反思。当前只保留一篇完整长文。",
+    empty: "还没有公开思考。",
+    back: "返回思考列表",
+  },
+  admin: {
+    path: "写作台",
+    title: "新建思考",
+    subtitle: "Ctrl+Enter 保存。可以先写中文，系统再生成英文版本。",
+    label_title: "标题",
+    label_content: "内容（Markdown）",
+    placeholder_title: "思考：...",
+    placeholder_content: "## 背景\n\n...",
+    btn_save: "保存思考",
+    btn_saving: "保存中...",
+    btn_clear: "清空",
+    hint_prefix: "保存后，访问",
+    hint_link: "/devlog",
+    hint_suffix: "查看新文章",
+    error_required: "标题和内容都是必填项。",
+    success_zh_prefix: "已保存 zh ->",
+    success_en_prefix: "已保存 en ->",
+    error_prefix: "错误：",
+  },
+};

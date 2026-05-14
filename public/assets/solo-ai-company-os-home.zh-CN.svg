@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820" role="img" aria-labelledby="title desc">
+  <title id="title">Solo-AI-Company-OS 产品入口图</title>
+  <desc id="desc">展示一人公司 OS 的三条入口、操作流和数据流。</desc>
+  <defs>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#d97706"/>
+    </marker>
+    <style>
+      .bg { fill: #111827; }
+      .panel { fill: #f8fafc; stroke: #d8dee9; stroke-width: 2; rx: 18; }
+      .module { fill: #ffffff; stroke: #d1d5db; stroke-width: 2; rx: 16; }
+      .darkPanel { fill: #1f2937; stroke: #4b5563; stroke-width: 2; rx: 18; }
+      .green { fill: #0f766e; }
+      .amber { fill: #b45309; }
+      .blue { fill: #2563eb; }
+      .purple { fill: #7c3aed; }
+      .title { font: 800 48px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #ffffff; }
+      .sub { font: 600 22px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #d1d5db; }
+      .h { font: 800 27px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #111827; }
+      .whiteH { font: 800 28px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #ffffff; }
+      .body { font: 560 19px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #374151; }
+      .small { font: 520 16px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #4b5563; }
+      .whiteSmall { font: 540 18px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #e5e7eb; }
+      .tag { font: 800 17px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #ffffff; }
+      .control { stroke: #2563eb; stroke-width: 4; fill: none; marker-end: url(#arrowBlue); }
+      .data { stroke: #d97706; stroke-width: 4; fill: none; stroke-dasharray: 10 8; marker-end: url(#arrowAmber); }
+      .rule { font: 800 17px "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #111827; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="820" class="bg"/>
+  <text x="72" y="82" class="title">Solo-AI-Company-OS</text>
+  <text x="76" y="122" class="sub">先选入口，再开 AI。把聊天窗口里的工作变成可交接、可复查、可复用的公司记忆。</text>
+
+  <rect x="72" y="160" width="384" height="164" class="panel"/>
+  <rect x="96" y="184" width="104" height="32" class="green"/>
+  <text x="148" y="207" text-anchor="middle" class="tag">入口 1</text>
+  <text x="96" y="252" class="h">AI 员工派工台</text>
+  <text x="96" y="288" class="body">选 AI-01 到 AI-05，复制启动词。</text>
+
+  <rect x="508" y="160" width="384" height="164" class="panel"/>
+  <rect x="532" y="184" width="104" height="32" class="amber"/>
+  <text x="584" y="207" text-anchor="middle" class="tag">入口 2</text>
+  <text x="532" y="252" class="h">AgentOps Doctor</text>
+  <text x="532" y="288" class="body">诊断 handoff、worklog、claim。</text>
+
+  <rect x="944" y="160" width="384" height="164" class="panel"/>
+  <rect x="968" y="184" width="104" height="32" class="blue"/>
+  <text x="1020" y="207" text-anchor="middle" class="tag">入口 3</text>
+  <text x="968" y="252" class="h">一页纸架构</text>
+  <text x="968" y="288" class="body">看懂完整 OS 的对象关系。</text>
+
+  <rect x="80" y="390" width="210" height="92" class="module"/>
+  <text x="185" y="432" text-anchor="middle" class="h">Human</text>
+  <text x="185" y="462" text-anchor="middle" class="small">决策与批准</text>
+
+  <rect x="350" y="390" width="210" height="92" class="module"/>
+  <text x="455" y="432" text-anchor="middle" class="h">AI Employees</text>
+  <text x="455" y="462" text-anchor="middle" class="small">按角色执行</text>
+
+  <rect x="620" y="390" width="210" height="92" class="module"/>
+  <text x="725" y="432" text-anchor="middle" class="h">Worklogs</text>
+  <text x="725" y="462" text-anchor="middle" class="small">记录与复查</text>
+
+  <rect x="890" y="390" width="210" height="92" class="module"/>
+  <text x="995" y="432" text-anchor="middle" class="h">Handoffs</text>
+  <text x="995" y="462" text-anchor="middle" class="small">接力与重试</text>
+
+  <rect x="1160" y="390" width="160" height="92" class="module"/>
+  <text x="1240" y="432" text-anchor="middle" class="h">Skills</text>
+  <text x="1240" y="462" text-anchor="middle" class="small">复用经验</text>
+
+  <path d="M290 436 L350 436" class="control"/>
+  <path d="M560 436 L620 436" class="control"/>
+  <path d="M830 436 L890 436" class="data"/>
+  <path d="M1100 436 L1160 436" class="data"/>
+  <path d="M995 482 C995 552 455 552 455 482" class="control"/>
+  <path d="M1240 482 C1240 610 455 610 455 482" class="data"/>
+
+  <rect x="208" y="560" width="984" height="106" class="darkPanel"/>
+  <text x="700" y="604" text-anchor="middle" class="whiteH">两条线分开看</text>
+  <text x="700" y="640" text-anchor="middle" class="whiteSmall">蓝色实线 = 操作流：人如何派工、AI 如何接力</text>
+  <text x="700" y="670" text-anchor="middle" class="whiteSmall">橙色虚线 = 数据流：worklog / handoff / skill 如何留下长期记忆</text>
+
+  <rect x="370" y="712" width="300" height="52" class="blue"/>
+  <text x="520" y="746" text-anchor="middle" class="tag">操作流：谁做下一步</text>
+
+  <rect x="730" y="712" width="300" height="52" class="amber"/>
+  <text x="880" y="746" text-anchor="middle" class="tag">数据流：什么被记住</text>
+</svg>
