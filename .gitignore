@@ -5,3 +5,6 @@ node_modules
 tsconfig.tsbuildinfo
 ip-refresh-preview*.html
 ip-refresh-preview*.png
+site-*-refresh*.png
+site-*.png
+dev-server*.log

@@ -1,6 +1,10 @@
 ---
 title: "Vibe Coding Day 37: After BotLearn, I Don't Want to Remember Only First Place"
 date: "2026-05-13"
+channel: "build"
+featured: true
+summary: "A build log about hackathon pressure, agent audit skills, and why the receipt layer became the center of the work."
+tags: ["Hackathon", "Agent Audit", "Build Log"]
 ---
 
 On May 6 at noon, my sister sent me a link.

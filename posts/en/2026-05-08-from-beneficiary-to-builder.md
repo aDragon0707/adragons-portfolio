@@ -1,6 +1,10 @@
 ---
 title: "From Beneficiary to Builder: Six AI Systems from Zero"
 date: "2026-05-08"
+channel: "thinking"
+featured: true
+summary: "The personal origin story behind six AI systems: learning, education, review loops, and becoming a builder."
+tags: ["Learning", "Builder", "Personal OS"]
 ---
 
 > This is the English companion note for a longer Chinese essay. The full version is available on the Chinese site.

@@ -11,7 +11,13 @@ export interface PostMeta {
   slug: string;
   title: string;
   date: string;
+  channel: "tech" | "thinking" | "build";
+  tags: string[];
+  featured: boolean;
+  summary: string;
 }
+
+export type PostChannel = PostMeta["channel"];
 
 export function getSortedPostsData(lang: Locale): PostMeta[] {
   const dir = postsDir(lang);
@@ -27,6 +33,10 @@ export function getSortedPostsData(lang: Locale): PostMeta[] {
       slug,
       title: (data.title as string) ?? slug,
       date: (data.date as string) ?? "",
+      channel: normalizeChannel(data.channel),
+      tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
+      featured: data.featured === true,
+      summary: (data.summary as string) ?? "",
     };
   });
 
@@ -48,10 +58,29 @@ export async function getPostData(
 
   return {
     meta: {
-      slug,
-      title: (data.title as string) ?? slug,
-      date: (data.date as string) ?? "",
-    },
+        slug,
+        title: (data.title as string) ?? slug,
+        date: (data.date as string) ?? "",
+        channel: normalizeChannel(data.channel),
+        tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
+        featured: data.featured === true,
+        summary: (data.summary as string) ?? "",
+      },
     content,
   };
+}
+
+export function getPostsByChannel(
+  lang: Locale,
+  channel: PostChannel
+): PostMeta[] {
+  return getSortedPostsData(lang).filter((post) => post.channel === channel);
+}
+
+function normalizeChannel(value: unknown): PostChannel {
+  if (value === "tech" || value === "thinking" || value === "build") {
+    return value;
+  }
+
+  return "thinking";
 }
