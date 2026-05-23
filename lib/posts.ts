@@ -19,6 +19,13 @@ export interface PostMeta {
 
 export type PostChannel = PostMeta["channel"];
 
+export function getChannelLabel(
+  labels: Record<PostChannel, string>,
+  channel: PostChannel
+): string {
+  return labels[channel] ?? channel;
+}
+
 export function getSortedPostsData(lang: Locale): PostMeta[] {
   const dir = postsDir(lang);
   if (!fs.existsSync(dir)) return [];

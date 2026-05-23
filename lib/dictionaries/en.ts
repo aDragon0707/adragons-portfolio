@@ -4,7 +4,7 @@ export const en = {
     home: "Home",
     blog: "Tech Blog",
     thinking: "Thinking",
-    projects: "Lab",
+    projects: "Projects",
     about: "About",
     contact: "Contact",
     admin: "Admin",
@@ -12,56 +12,57 @@ export const en = {
   },
   home: {
     hero: {
-      eyebrow: "Living personal lab",
-      title: "A flowing lab for agent trust, proof, and solo-company systems.",
+      eyebrow: "AGENTIC EVIDENCE ENGINEERING",
+      title: "Define the proof before you call the agent.",
+      accent: "Ship the trace.",
       intro_title:
-        "Thinking becomes writing. Writing becomes builds. Builds become proof. Proof creates the next chance.",
+        "ADRAGON turns agent work into receipts, web evidence, and compact operating systems that can be reviewed, reused, and trusted.",
       description:
-        "ADRAGON is a bilingual technology home for AI agent receipts, live web-data evidence, learning systems, and the operating loop behind a solo AI company.",
-      cta_primary: "Read the current thesis",
-      cta_secondary: "Explore the lab",
+        "Today you can inspect Agent Flight Recorder, ShadowBuyer, and the solo-company tools that keep one-person work accountable.",
+      cta_primary: "View live systems",
+      cta_secondary: "Find the path",
       github_href: "https://github.com/aDragon0707",
     },
     status: {
-      label: "Current flow",
-      now: "Now building",
-      system: "Agent Flight Recorder + ShadowBuyer evidence layer",
-      pulse: "Latest pulse",
+      label: "Signal",
+      now: "Now shipping",
+      system: "Agent Flight Recorder + ShadowBuyer",
+      pulse: "Live evidence",
       pulse_body:
-        "Turning claims, screenshots, reports, and human review into proof objects a visitor can inspect.",
-      quote: "The scarce layer is not another answer. It is accountable execution.",
+        "Claims become artifacts, audits become proofs, and proofs become something a visitor can inspect.",
+      quote: "Trust is built from receipts, not vibes.",
     },
     flow: {
-      label: "Operating loop",
-      title: "One continuous line: thinking, project, proof, opportunity.",
+      label: "Operating architecture",
+      title: "Thinking becomes thesis, thesis becomes system, system becomes proof.",
       intro:
-        "The site should feel alive because the work is alive. Each note can become a demo, each demo can become a receipt, each receipt can become trust.",
+        "The site should feel composed, not busy. Each stage sharpens the next one until the work can stand in public with evidence attached.",
       items: [
-        ["Thinking", "Read, observe, and name the pressure."],
-        ["Writing", "Publish the question as a note or thesis."],
-        ["Project", "Ship a workflow, demo, report, or receipt."],
-        ["Proof", "Attach GitHub, PDFs, screenshots, logs, and review gates."],
-        ["Cash / Token", "Use pilots, grants, and client work to fund the next loop."],
+        ["Observe", "Read the field, name the pressure, and isolate the real problem."],
+        ["Write", "Turn the pressure into a thesis, note, or operating decision."],
+        ["Build", "Ship a workflow, interface, protocol, or compact system."],
+        ["Trace", "Keep screenshots, logs, PDFs, and review notes attached."],
+        ["Deliver", "Package the proof into a pilot, demo, or public artifact."],
       ],
     },
     projects: {
-      eyebrow: "Featured builds",
-      title: "Projects are proof objects, not portfolio tiles.",
+      eyebrow: "Featured systems",
+      title: "Three systems sit at the center of the brand.",
       description:
-        "The first three builds carry the public story: live web evidence, agent receipts, and the operating system that keeps one person compounding.",
-      view_all: "Open project lab",
+        "They define the public story: agent receipts, web evidence, and the operating system that keeps one person compounding with taste intact.",
+      view_all: "Open system ledger",
       items: [
         {
           title: "ShadowBuyer Web Data Audit Agent",
-          category: "Live web-data audit",
-          status: "Priority build",
+          category: "Web evidence audit",
+          status: "Public evidence system",
           problem:
             "Public pages contain price, inventory, policy, and fee signals, but buyers still need reviewable evidence.",
           thesis:
             "A small audit agent can turn messy public web data into evidence cards and a one-page report.",
           system:
-            "Capture page, extract fields, compare differences, preserve screenshots, write claim boundaries.",
-          next: "Package a 90-second demo and a clearer paid pilot entry.",
+            "Capture the page, extract fields, compare differences, preserve screenshots, and write claim boundaries.",
+          next: "Package a tighter demo and a clearer paid pilot entry.",
           description:
             "A cash-flow oriented web-data agent that captures public pages, generates evidence cards, compares differences, and outputs a concise audit report.",
           tags: ["Bright Data", "Evidence cards", "Audit report"],
@@ -82,8 +83,8 @@ export const en = {
         },
         {
           title: "Agent Flight Recorder",
-          category: "Agent receipt layer",
-          status: "Hackathon build",
+          category: "Agent receipt protocol",
+          status: "Protocol build",
           problem:
             "Agents can confidently claim work is done while missing evidence, review, and responsibility boundaries.",
           thesis:
@@ -121,7 +122,7 @@ export const en = {
         {
           title: "Reading Reflection OS",
           category: "Learning operating system",
-          status: "Lab system",
+          status: "Private system",
           problem:
             "Reading often disappears into notes without becoming judgment or action.",
           thesis:
@@ -140,7 +141,7 @@ export const en = {
         {
           title: "IELTS Assistant",
           category: "AI learning tool",
-          status: "Live website",
+          status: "Live product",
           problem:
             "Language learning needs review loops, OCR-assisted material handling, and writing feedback.",
           thesis:
@@ -159,7 +160,7 @@ export const en = {
         {
           title: "Socrates Focus",
           category: "Deep learning system",
-          status: "Lab system",
+          status: "Research system",
           problem:
             "Learning tools often produce answers without forcing better reasoning.",
           thesis:
@@ -178,41 +179,41 @@ export const en = {
       ],
     },
     notes: {
-      label: "Latest notes",
-      title: "The thought spine behind the builds.",
+      label: "Latest writing",
+      title: "The thought spine behind the systems.",
       subtitle:
-        "Technical notes and personal essays share one archive. The channel tells you whether the piece is engineering, founder thinking, or learning reflection.",
+        "Tech posts and personal notes share one archive. The channel tells you whether a piece is engineering, founder reasoning, or reflection.",
       view_blog: "Tech blog",
       view_thinking: "Thinking archive",
-      view_all: "All notes",
+      view_all: "All writing",
       empty: "No public notes yet.",
       admin_hint: "Draft new notes from the private writing desk.",
       admin_label: "Open writing desk",
     },
     proof: {
-      label: "Proof shelf",
-      title: "Trust starts with objects a visitor can open.",
+      label: "Governance",
+      title: "Every claim should open onto an artifact.",
       intro:
-        "The site should never ask people to believe a claim with no artifact behind it.",
+        "The site never asks a visitor to trust a claim that cannot be checked.",
       items: [
         ["GitHub", "Protocols, operating systems, and public experiments."],
         ["PDF reports", "Executive summaries and redacted audit samples."],
-        ["Receipts", "Claim boundaries, missing evidence, and required fixes."],
-        ["Demos", "Short videos or walkthroughs that show the system moving."],
+        ["Receipts", "Claim boundaries, evidence gaps, and required fixes."],
+        ["Demos", "Short walkthroughs that show the system moving."],
       ],
     },
     builder: {
       label: "About",
-      title: "The builder is part of the system.",
+      title: "The operator is part of the system.",
       body:
-        "I am building from the edge between learning, product judgment, AI workflows, and proof. The long-term question is how one person can use AI without losing responsibility, taste, and memory.",
-      second_title: "The edge is productizing ambiguity.",
+        "I build at the edge between learning, product judgment, AI workflows, and proof. The long-term question is how one person can use AI without losing responsibility, taste, or memory.",
+      second_title: "Productizing ambiguity.",
       second_body:
         "I turn messy work into flows, interfaces, evidence objects, review gates, and scoped pilots. The connective tissue is the product.",
     },
     offers: {
       label: "Pilot entry",
-      title: "Start with one small proof-producing pilot.",
+      title: "Start with one proof-producing pilot.",
       intro:
         "The goal is not a hard sales page. It is a low-friction way for serious visitors to test the working style.",
       items: [
@@ -251,10 +252,10 @@ export const en = {
     },
   },
   archive: {
-    all_path: "Notes",
+    all_path: "Archive",
     blog_path: "Tech Blog",
     thinking_path: "Thinking",
-    all_title: "All notes",
+    all_title: "All writing",
     blog_title: "Technical blog",
     thinking_title: "Personal thinking",
     all_subtitle:
@@ -264,12 +265,12 @@ export const en = {
     thinking_subtitle:
       "Personal essays about learning, judgment, building, and becoming a more complete operator.",
     empty: "No public notes yet.",
-    back: "Back to notes",
+    back: "Back to archive",
     featured: "Featured",
     channels: {
-      tech: "Tech Blog",
+      tech: "Tech blog",
       thinking: "Thinking",
-      build: "Build Log",
+      build: "Build log",
     },
   },
   admin: {

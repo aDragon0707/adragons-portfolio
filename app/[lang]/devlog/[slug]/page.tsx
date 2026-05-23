@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { getSortedPostsData, getPostData } from "@/lib/posts";
+import { getChannelLabel, getSortedPostsData, getPostData } from "@/lib/posts";
 import { getDictionary, LOCALES, type Locale } from "@/lib/dictionaries";
 import type { Metadata } from "next";
 
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PostPage({ params }: Props) {
   const { lang, slug } = await params;
-  const dict = getDictionary(lang).devlog;
+  const dict = getDictionary(lang).archive;
 
   let meta: Awaited<ReturnType<typeof getPostData>>["meta"];
   let content: string;
@@ -41,49 +41,36 @@ export default async function PostPage({ params }: Props) {
   const isZh = lang === "zh";
 
   return (
-    <main className={`article-shell content-wrap py-16 md:py-24 ${isZh ? "cjk-safe" : ""}`}>
-      <nav className="article-kicker mb-10 flex items-center gap-2 text-sm text-[color:var(--muted)]">
-        <Link
-          href={`/${lang}/devlog`}
-          className="quiet-link"
-        >
-          {dict.path}
+    <main className={`article-shell article-rail ${isZh ? "cjk-safe" : ""}`}>
+      <nav className="article-kicker content-wrap">
+        <Link href={`/${lang}/devlog`} className="quiet-link">
+          {dict.all_path}
         </Link>
         <span>/</span>
         <span className="text-[color:var(--faint)]">{slug}</span>
       </nav>
 
-      <header className="article-header mb-12 border-b border-[color:var(--line)] pb-10">
-        <time
-          dateTime={meta.date}
-          className="mb-5 block text-sm text-[color:var(--faint)]"
-        >
-          {meta.date}
+      <header className="article-header content-wrap">
+        <time dateTime={meta.date}>
+          {meta.date} / {getChannelLabel(dict.channels, meta.channel)}
         </time>
-        <h1 className="article-title text-balance text-4xl font-bold leading-tight text-[color:var(--ink)] md:text-6xl">
-          {meta.title}
-        </h1>
+        <h1 className="article-title">{meta.title}</h1>
+        {meta.summary && <p>{meta.summary}</p>}
+        {meta.tags.length > 0 && (
+          <div className="lab-tags">
+            {meta.tags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+        )}
       </header>
 
-      <article
-        className="
-          devlog-prose prose
-          prose-headings:font-semibold prose-headings:tracking-tight
-          prose-a:text-[color:var(--blue)] hover:prose-a:text-[color:var(--ink)]
-          prose-p:text-[color:var(--ink)] prose-li:text-[color:var(--ink)]
-          prose-strong:font-semibold prose-strong:text-[color:var(--ink)]
-          prose-code:text-[color:var(--ink)] prose-pre:text-sm
-          prose-hr:border-[color:var(--line)]
-        "
-      >
+      <article className="devlog-prose prose content-wrap">
         <MDXRemote source={content} />
       </article>
 
-      <div className="article-footer mt-16 border-t border-[color:var(--line)] pt-8">
-        <Link
-          href={`/${lang}/devlog`}
-          className="quiet-link text-sm"
-        >
+      <div className="article-footer content-wrap">
+        <Link href={`/${lang}/devlog`} className="quiet-link text-sm">
           {dict.back}
         </Link>
       </div>

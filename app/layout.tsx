@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "ADRAGON | AI Solo Company OS",
   description:
-    "A personal technology portfolio for AI solo-company systems, agent audit protocols, learning tools, evidence-led workflows, and solo-builder leverage.",
+    "A dark technical brand for agent receipts, evidence-led workflows, and solo-company systems.",
 };
 
 export default function RootLayout({
@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body className="text-[color:var(--ink)] antialiased selection:bg-[color:oklch(0.88_0.05_250)]">
+      <body className="text-[color:var(--ink)] antialiased selection:bg-[color:oklch(0.8_0.11_70_/_0.35)] selection:text-[color:var(--ink)]">
         {children}
       </body>
     </html>

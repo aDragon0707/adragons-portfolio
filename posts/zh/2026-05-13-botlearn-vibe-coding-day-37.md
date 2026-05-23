@@ -1,6 +1,10 @@
 ---
 title: "Vibe Coding 第 37 天：我在 BotLearn 之后，不想只记住第一名"
 date: "2026-05-13"
+channel: "build"
+featured: true
+summary: "一篇关于黑客松压力、Agent 审计技能和回执层为什么成为主线的构建记录。"
+tags: ["黑客松", "Agent 审计", "构建记录"]
 ---
 
 5 月 6 日中午，姐姐给我发来一个链接。

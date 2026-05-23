@@ -3,8 +3,6 @@ import fs from "fs";
 import path from "path";
 import { canUseOwnerApi } from "@/lib/owner-mode";
 
-// ─── Path helpers ─────────────────────────────────────────────────────────────
-
 const ZH_DIR = path.join(process.cwd(), "posts", "zh");
 const EN_DIR = path.join(process.cwd(), "posts", "en");
 
@@ -24,25 +22,14 @@ function toSlug(text: string): string {
 
 function buildFrontmatter(title: string, date: string): string {
   const escaped = title.replace(/"/g, '\\"');
-  return `---\ntitle: "${escaped}"\ndate: "${date}"\n---\n\n`;
+  return `---\ntitle: "${escaped}"\ndate: "${date}"\nchannel: "thinking"\nfeatured: false\nsummary: ""\ntags: []\n---\n\n`;
 }
-
-// ─── LLM Translation ──────────────────────────────────────────────────────────
 
 interface TranslationResult {
   title: string;
   content: string;
 }
 
-/**
- * Translates a Chinese Markdown post into native English using an
- * OpenAI-compatible chat completions endpoint.
- *
- * Configure via environment variables:
- *   OPENAI_API_KEY   — required (also used as DEEPSEEK_API_KEY if set)
- *   OPENAI_BASE_URL  — optional, defaults to OpenAI; set to DeepSeek base URL to use that provider
- *   TRANSLATION_MODEL — optional model override (default: "gpt-4o-mini")
- */
 async function translateToEnglish(
   zhTitle: string,
   zhContent: string
@@ -66,14 +53,12 @@ async function translateToEnglish(
   const systemPrompt = `You are a precise technical translation engine specialized in developer documentation.
 Your sole task is to translate Chinese Markdown blog posts into native, developer-friendly English.
 
-STRICT RULES — never break these:
-1. Preserve ALL Markdown formatting exactly: headings (#, ##, ###), bold (**), italic (*), horizontal rules (---), lists (-, *), blockquotes (>).
-2. Preserve ALL code blocks verbatim — do NOT translate code, variable names, comments inside code blocks, or inline code.
-3. Translate ONLY natural-language prose: paragraphs, headings text, list item text, blockquote text, table cell text.
-4. Output ONLY a JSON object with exactly two keys:
-   - "title": the translated English title (string)
-   - "content": the translated English Markdown body WITHOUT any frontmatter (string)
-5. Do NOT wrap the JSON in markdown fences. Do NOT add any commentary outside the JSON.`;
+STRICT RULES:
+1. Preserve ALL Markdown formatting exactly: headings, bold, italic, lists, blockquotes, tables, and horizontal rules.
+2. Preserve ALL code blocks verbatim. Do not translate code, variable names, comments inside code blocks, or inline code.
+3. Translate ONLY natural-language prose.
+4. Output ONLY a JSON object with exactly two keys: "title" and "content".
+5. Do not wrap the JSON in markdown fences. Do not add commentary outside the JSON.`;
 
   const userPrompt = `Chinese Title: ${zhTitle}
 
@@ -113,13 +98,11 @@ ${zhContent}`;
   }
 
   if (!parsed.title?.trim() || !parsed.content?.trim()) {
-    throw new Error("LLM returned an incomplete translation (missing title or content)");
+    throw new Error("LLM returned an incomplete translation");
   }
 
   return { title: parsed.title.trim(), content: parsed.content.trim() };
 }
-
-// ─── Route handler ────────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
   if (!canUseOwnerApi(req)) {
@@ -141,6 +124,7 @@ export async function POST(req: NextRequest) {
   if (!title?.trim()) {
     return NextResponse.json({ error: "Title is required" }, { status: 400 });
   }
+
   if (!content?.trim()) {
     return NextResponse.json({ error: "Content is required" }, { status: 400 });
   }
@@ -149,7 +133,6 @@ export async function POST(req: NextRequest) {
   const zhContent = content.trim();
   const date = getDateString();
 
-  // ── Step 1: Translate ────────────────────────────────────────────────────────
   let enTitle: string;
   let enContent: string;
 
@@ -165,29 +148,30 @@ export async function POST(req: NextRequest) {
         error:
           err instanceof Error
             ? `Translation failed: ${err.message}`
-            : "Translation failed (unknown error)",
+            : "Translation failed",
       },
       { status: 502 }
     );
   }
 
-  // ── Step 2: Build filename from the translated English title ─────────────────
   const rawSlug = toSlug(enTitle) || Date.now().toString();
   const filename = `${date}-${rawSlug}.md`;
 
-  // ── Step 3: Write both files ─────────────────────────────────────────────────
   try {
     await fs.promises.mkdir(ZH_DIR, { recursive: true });
     await fs.promises.mkdir(EN_DIR, { recursive: true });
 
-    const zhFileContent =
-      buildFrontmatter(zhTitle, date) + zhContent + "\n";
-    const enFileContent =
-      buildFrontmatter(enTitle, date) + enContent + "\n";
-
     await Promise.all([
-      fs.promises.writeFile(path.join(ZH_DIR, filename), zhFileContent, "utf-8"),
-      fs.promises.writeFile(path.join(EN_DIR, filename), enFileContent, "utf-8"),
+      fs.promises.writeFile(
+        path.join(ZH_DIR, filename),
+        buildFrontmatter(zhTitle, date) + zhContent + "\n",
+        "utf-8"
+      ),
+      fs.promises.writeFile(
+        path.join(EN_DIR, filename),
+        buildFrontmatter(enTitle, date) + enContent + "\n",
+        "utf-8"
+      ),
     ]);
   } catch (err) {
     console.error("[save-post] fs write failed:", err);

@@ -1,4 +1,5 @@
 import type { Locale, getDictionary } from "@/lib/dictionaries";
+import type { PostMeta } from "@/lib/posts";
 import type { ReactNode } from "react";
 
 type HomeDict = ReturnType<typeof getDictionary>["home"];
@@ -8,121 +9,98 @@ export function HomeView({
   lang,
   dict,
   canManageNotes,
+  posts,
 }: {
   lang: Locale;
   dict: HomeDict;
   canManageNotes: boolean;
+  posts: PostMeta[];
 }) {
   const isZh = lang === "zh";
   const resolveHref = (href: string) =>
     href.startsWith("#") ? `/${lang}${href}` : href;
 
   return (
-    <main className={`site-shell ip-home ${isZh ? "cjk-safe" : ""}`}>
-      <section id="hero" className="ip-hero section-frame">
-        <div className="content-wrap ip-hero-grid">
-          <div className="ip-hero-copy">
-            <p className="ip-eyebrow">{dict.hero.eyebrow}</p>
-            <h1 className="ip-hero-title">
-              {isZh ? (
-                <>
-                  <span>AI Agent 需要证据，</span>
-                  <span>不只需要答案。</span>
-                </>
-              ) : (
-                dict.hero.title
-              )}
-            </h1>
-            <p className="ip-hero-subtitle">{dict.hero.intro_title}</p>
-            <p className="ip-copy">{dict.hero.description}</p>
-            <div className="ip-actions">
-              <a className="button-link primary-action" href={`/${lang}#about`}>
+    <main className={`site-shell brand-home ${isZh ? "cjk-safe" : ""}`}>
+      <section id="hero" className="brand-hero section-frame">
+        <div className="content-wrap brand-hero-grid">
+          <div className="brand-hero-copy">
+            <p className="brand-eyebrow">{dict.hero.eyebrow}</p>
+            {isZh ? (
+              <h1 className="brand-hero-title hero-title-zh">
+                <span>把技术、思考与作品</span>
+                <span>
+                  接进证据链。<em>{dict.hero.accent}</em>
+                </span>
+              </h1>
+            ) : (
+              <h1 className="brand-hero-title">
+                <span>{dict.hero.title}</span>
+                <em>{dict.hero.accent}</em>
+              </h1>
+            )}
+            <p className="brand-hero-subtitle">{dict.hero.intro_title}</p>
+            <p className="brand-copy">{dict.hero.description}</p>
+            <div className="brand-actions">
+              <a className="button-link primary-action" href={`/${lang}/thinking`}>
                 {dict.hero.cta_primary}
               </a>
-              <a className="button-link" href={`/${lang}#contact`}>
+              <a className="button-link" href={`/${lang}/projects`}>
                 {dict.hero.cta_secondary}
               </a>
             </div>
+            <div className="hero-micro-nav" aria-label="ADRAGON signals">
+              <span>Open source</span>
+              <span>Receipts</span>
+              <span>Evidence</span>
+              <span>Solo OS</span>
+            </div>
           </div>
 
-          <ReceiptPanel dict={dict} />
+          <StatusPanel dict={dict} />
         </div>
       </section>
 
       <Section
-        id="about"
-        label={dict.builder.label}
-        title={dict.builder.title}
-        intro={dict.builder.body}
+        id="flow"
+        label={dict.flow.label}
+        title={dict.flow.title}
+        intro={dict.flow.intro}
       >
-        <div className="ip-split-panel">
-          <article>
-            <h3>{dict.builder.second_title}</h3>
-            <p>{dict.builder.second_body}</p>
-          </article>
-        </div>
-      </Section>
-
-      <Section
-        id="principles"
-        label={dict.principles.label}
-        title={dict.principles.title}
-      >
-        <div className="ip-do-grid">
-          <article className="ip-card">
-            <span className="ip-card-meta">{dict.principles.do_title}</span>
-            <div className="ip-rule-list">
-              {dict.principles.do.map((item) => (
-                <p key={item}>{item}</p>
-              ))}
-            </div>
-          </article>
-          <article className="ip-card">
-            <span className="ip-card-meta">{dict.principles.dont_title}</span>
-            <div className="ip-rule-list">
-              {dict.principles.dont.map((item) => (
-                <p key={item}>{item}</p>
-              ))}
-            </div>
-          </article>
-        </div>
-      </Section>
-
-      <Section
-        id="loop"
-        label={dict.loop.label}
-        title={dict.loop.title}
-        intro={dict.loop.intro}
-      >
-        <div className="ip-loop">
-          {dict.loop.items.map(([title, body]) => (
-            <div className="ip-loop-step" key={title}>
+        <div className="signal-strip" aria-label={dict.flow.label}>
+          {dict.flow.items.map(([title, body], index) => (
+            <article className="signal-step" key={title}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
               <strong>{title}</strong>
-              <span>{body}</span>
-            </div>
+              <p>{body}</p>
+            </article>
           ))}
         </div>
       </Section>
 
       <section id="projects" className="section-frame">
-        <div className="content-wrap ip-section-grid">
-          <p className="ip-label">{dict.projects.eyebrow}</p>
+        <div className="content-wrap brand-section-grid">
+          <p className="brand-label">{dict.projects.eyebrow}</p>
           <div>
-            <h2 className="ip-section-title">{dict.projects.title}</h2>
-            <p className="ip-copy ip-section-intro">
+            <h2 className="brand-section-title">{dict.projects.title}</h2>
+            <p className="brand-copy brand-section-intro">
               {dict.projects.description}
             </p>
 
-            <div className="ip-projects">
-              {dict.projects.items.map((project, index) => (
+            <div className="project-ledger">
+              {dict.projects.items.slice(0, 3).map((project, index) => (
                 <ProjectCard
                   key={project.title}
                   project={project}
                   href={resolveHref(project.primaryHref)}
-                  priority={index < 3}
+                  priority={index === 0}
                 />
               ))}
             </div>
+
+            <a className="quiet-link brand-more-link" href={`/${lang}/projects`}>
+              {dict.projects.view_all} -&gt;
+            </a>
           </div>
         </div>
       </section>
@@ -133,7 +111,31 @@ export function HomeView({
         title={dict.notes.title}
         intro={dict.notes.subtitle}
       >
-        <div className="ip-note-links">
+        <div className="note-index">
+          {posts.length === 0 ? (
+            <p className="brand-copy">{dict.notes.empty}</p>
+          ) : (
+            posts.map((post) => (
+              <a
+                className="note-card"
+                href={`/${lang}/devlog/${post.slug}`}
+                key={post.slug}
+              >
+                <span>{post.date}</span>
+                <strong>{post.title}</strong>
+                {post.summary && <p>{post.summary}</p>}
+                <small>{post.channel}</small>
+              </a>
+            ))
+          )}
+        </div>
+        <div className="brand-note-links">
+          <a className="quiet-link" href={`/${lang}/blog`}>
+            {dict.notes.view_blog}
+          </a>
+          <a className="quiet-link" href={`/${lang}/thinking`}>
+            {dict.notes.view_thinking}
+          </a>
           <a className="quiet-link" href={`/${lang}/devlog`}>
             {dict.notes.view_all}
           </a>
@@ -143,7 +145,35 @@ export function HomeView({
             </a>
           )}
         </div>
-        {canManageNotes && <p className="ip-copy">{dict.notes.admin_hint}</p>}
+        {canManageNotes && <p className="brand-copy">{dict.notes.admin_hint}</p>}
+      </Section>
+
+      <Section
+        id="proof"
+        label={dict.proof.label}
+        title={dict.proof.title}
+        intro={dict.proof.intro}
+      >
+        <div className="proof-shelf">
+          {dict.proof.items.map(([title, body]) => (
+            <article key={title}>
+              <strong>{title}</strong>
+              <p>{body}</p>
+            </article>
+          ))}
+        </div>
+      </Section>
+
+      <Section
+        id="about"
+        label={dict.builder.label}
+        title={dict.builder.title}
+        intro={dict.builder.body}
+      >
+        <div className="builder-note">
+          <h3>{dict.builder.second_title}</h3>
+          <p>{dict.builder.second_body}</p>
+        </div>
       </Section>
 
       <Section
@@ -152,9 +182,9 @@ export function HomeView({
         title={dict.offers.title}
         intro={dict.offers.intro}
       >
-        <div className="ip-offer-grid">
+        <div className="offer-grid">
           {dict.offers.items.map((offer) => (
-            <article className="ip-card ip-offer" key={offer.title}>
+            <article className="offer-card" key={offer.title}>
               <h3>{offer.title}</h3>
               <p>{offer.body}</p>
               <strong>{offer.price}</strong>
@@ -163,32 +193,12 @@ export function HomeView({
         </div>
       </Section>
 
-      {canManageNotes && (
-        <section id="owner-loop" className="ip-private section-frame">
-          <div className="content-wrap">
-            <p className="ip-label">{dict.private_loop.label}</p>
-            <h2 className="ip-section-title">{dict.private_loop.title}</h2>
-            <p className="ip-copy ip-section-intro">
-              {dict.private_loop.intro}
-            </p>
-            <div className="ip-private-grid">
-              {dict.private_loop.days.map((day, index) => (
-                <article className="ip-private-day" key={day}>
-                  <strong>Day {index + 1}</strong>
-                  <p>{day}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
       <footer>
-        <div className="content-wrap ip-footer">
+        <div className="content-wrap brand-footer">
           <div>
-            <p className="ip-label">{dict.contact.title}</p>
-            <p className="ip-footer-copy">{dict.contact.body}</p>
-            <div className="ip-footer-links">
+            <p className="brand-label">{dict.contact.title}</p>
+            <p className="brand-footer-copy">{dict.contact.body}</p>
+            <div className="brand-footer-links">
               <a
                 className="quiet-link"
                 href={dict.contact.github_href}
@@ -248,11 +258,11 @@ function Section({
 }) {
   return (
     <section id={id} className="section-frame">
-      <div className="content-wrap ip-section-grid">
-        <p className="ip-label">{label}</p>
+      <div className="content-wrap brand-section-grid">
+        <p className="brand-label">{label}</p>
         <div>
-          <h2 className="ip-section-title">{title}</h2>
-          {intro && <p className="ip-copy ip-section-intro">{intro}</p>}
+          <h2 className="brand-section-title">{title}</h2>
+          {intro && <p className="brand-copy brand-section-intro">{intro}</p>}
           {children}
         </div>
       </div>
@@ -260,38 +270,24 @@ function Section({
   );
 }
 
-function ReceiptPanel({ dict }: { dict: HomeDict }) {
-  const shortRows = [
-    "Tests claimed. Evidence required.",
-    "Missing logs and human review.",
-    "SACP 412. Fix required. Hash ready.",
-  ];
-
+function StatusPanel({ dict }: { dict: HomeDict }) {
   return (
-    <aside className="ip-receipt-panel" aria-label="Agent receipt preview">
-      <div className="ip-receipt-head">
-        <span>{dict.signal.eyebrow_left}</span>
-        <span>{dict.signal.eyebrow_right}</span>
+    <aside className="status-panel" aria-label={dict.status.label}>
+      <div className="status-panel-top">
+        <strong>Agent Flight Recorder</strong>
+        <span>SACP canvas · public protocol · GitHub</span>
       </div>
-      <div className="ip-receipt">
-        {dict.signal.rows.map(([label, value], index) => (
-          <div className="ip-receipt-row" key={label}>
-            <span>{label}</span>
-            <strong>
-              <span className="ip-receipt-full">{value}</span>
-              <span className="ip-receipt-short">{shortRows[index]}</span>
-            </strong>
-          </div>
-        ))}
-        <div className="ip-receipt-chips">
-          {dict.signal.chips.map((chip, index) => (
-            <span key={chip} data-tone={index}>
-              {chip}
-            </span>
-          ))}
+      <div className="status-stack">
+        <div>
+          <span>ShadowBuyer</span>
+          <strong>Web evidence audit · PDF proof · redacted samples</strong>
+        </div>
+        <div>
+          <span>Solo AI Company OS</span>
+          <strong>Operating memory · handoffs · reusable skills</strong>
         </div>
       </div>
-      <p>{dict.signal.foot}</p>
+      <blockquote>{dict.status.quote}</blockquote>
     </aside>
   );
 }
@@ -308,45 +304,62 @@ function ProjectCard({
   const isExternal = !project.primaryHref.startsWith("#");
 
   return (
-    <article className={`ip-project ${priority ? "is-priority" : ""}`}>
+    <article className={`project-proof ${priority ? "is-priority" : ""}`}>
       <div>
-        <div className="ip-project-meta">
+        <div className="project-proof-meta">
           <span data-tone={project.isPublic ? "public" : "preview"}>
             {project.status}
           </span>
           <span>{project.category}</span>
         </div>
         <h3>{project.title}</h3>
-        <div className="ip-tags">
+        <p>{project.description}</p>
+        <div className="lab-tags">
           {project.tags.map((tag) => (
             <span key={tag}>{tag}</span>
           ))}
         </div>
       </div>
 
-      <div>
-        <p>{project.description}</p>
-        <div className="ip-project-links">
-          <a
-            href={href}
-            target={isExternal ? "_blank" : undefined}
-            rel={isExternal ? "noopener noreferrer" : undefined}
-            className="quiet-link"
-          >
-            {project.primaryLabel} -&gt;
-          </a>
-          {project.secondaryLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="evidence-link"
-            >
-              {link.label}
-            </a>
-          ))}
+      <dl>
+        <div>
+          <dt>Problem</dt>
+          <dd>{project.problem}</dd>
         </div>
+        <div>
+          <dt>Protocol</dt>
+          <dd>{project.thesis}</dd>
+        </div>
+        <div>
+          <dt>Trace</dt>
+          <dd>{project.system}</dd>
+        </div>
+        <div>
+          <dt>Next</dt>
+          <dd>{project.next}</dd>
+        </div>
+      </dl>
+
+      <div className="project-proof-links">
+        <a
+          href={href}
+          target={isExternal ? "_blank" : undefined}
+          rel={isExternal ? "noopener noreferrer" : undefined}
+          className="quiet-link"
+        >
+          {project.primaryLabel} -&gt;
+        </a>
+        {project.secondaryLinks.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="evidence-link"
+          >
+            {link.label}
+          </a>
+        ))}
       </div>
     </article>
   );
