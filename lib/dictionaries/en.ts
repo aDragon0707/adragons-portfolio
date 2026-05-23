@@ -12,25 +12,57 @@ export const en = {
   },
   home: {
     hero: {
-      eyebrow: "AGENTIC EVIDENCE ENGINEERING",
-      title: "Define the proof before you call the agent.",
-      accent: "Ship the trace.",
+      eyebrow: "AI AGENT SYSTEM BUILDER",
+      title: "I build AI agent systems for web evidence and solo-company work.",
+      accent: "",
       intro_title:
-        "ADRAGON turns agent work into receipts, web evidence, and compact operating systems that can be reviewed, reused, and trusted.",
+        "ADRAGON is my personal technology portfolio: agent workflows, audit tools, and operating systems that turn messy work into inspectable products.",
       description:
-        "Today you can inspect Agent Flight Recorder, ShadowBuyer, and the solo-company tools that keep one-person work accountable.",
-      cta_primary: "View live systems",
-      cta_secondary: "Find the path",
+        "The work sits between AI agents, public web data, developer tooling, and durable personal operating systems.",
+      cta_primary: "View projects",
+      cta_secondary: "Contact",
       github_href: "https://github.com/aDragon0707",
     },
     status: {
-      label: "Signal",
+      label: "Metadata",
+      title: "Builder metadata",
       now: "Now shipping",
       system: "Agent Flight Recorder + ShadowBuyer",
       pulse: "Live evidence",
       pulse_body:
         "Claims become artifacts, audits become proofs, and proofs become something a visitor can inspect.",
       quote: "Trust is built from receipts, not vibes.",
+      items: [
+        ["Role", "AI agent system builder"],
+        ["Focus", "Web evidence, workflow reliability, solo-company systems"],
+        ["Current work", "ShadowBuyer, Agent Flight Recorder, Solo AI Company OS"],
+        ["Base", "Shanghai, remote-friendly"],
+      ],
+    },
+    home_sections: {
+      projects: {
+        label: "Projects",
+        title: "Systems I am building.",
+        intro:
+          "The projects show the shape of the work: audit agents, agent reliability tools, and a personal operating system for AI-assisted building.",
+        view_all: "View all projects",
+      },
+      tech_blog: {
+        label: "Tech Blog",
+        title: "Engineering notes.",
+        intro:
+          "Short technical writing about agents, workflow reliability, public web data, and implementation decisions.",
+        view_all: "Open tech blog",
+        empty: "No technical posts yet.",
+      },
+      thinking: {
+        label: "Personal Thinking",
+        title: "Thinking in public.",
+        intro:
+          "Personal notes about learning, judgment, solo-company practice, and becoming a better operator.",
+        view_all: "Open thinking archive",
+        empty: "No thinking notes yet.",
+      },
     },
     flow: {
       label: "Operating architecture",
@@ -238,9 +270,10 @@ export const en = {
       ],
     },
     contact: {
-      title: "Contact",
+      label: "Contact",
+      title: "Work with me or follow the systems.",
       body:
-        "Reach me through GitHub or email. I am especially interested in AI agent reliability, web-data evidence, developer tooling, and solo-company systems.",
+        "Reach me through GitHub or email. I am interested in AI agent reliability, web-data evidence, developer tooling, and solo-company systems.",
       github: "GitHub: aDragon0707",
       github_href: "https://github.com/aDragon0707",
       email_label: "Email: adragon@alantern.com",
@@ -248,6 +281,7 @@ export const en = {
       public_url_label: "Public site",
       public_url: "https://adragons-portfolio.vercel.app/en",
       qr_label: "Scan to open this site",
+      admin_label: "Open writing desk",
       footer: "Personal technology portfolio. Built with Next.js and Tailwind CSS.",
     },
   },

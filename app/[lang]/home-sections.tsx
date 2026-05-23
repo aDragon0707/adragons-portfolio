@@ -19,6 +19,10 @@ export function HomeView({
   const isZh = lang === "zh";
   const resolveHref = (href: string) =>
     href.startsWith("#") ? `/${lang}${href}` : href;
+  const techPosts = posts.filter((post) => post.channel === "tech").slice(0, 3);
+  const thinkingPosts = posts
+    .filter((post) => post.channel === "thinking" || post.channel === "build")
+    .slice(0, 3);
 
   return (
     <main className={`site-shell brand-home ${isZh ? "cjk-safe" : ""}`}>
@@ -26,65 +30,32 @@ export function HomeView({
         <div className="content-wrap brand-hero-grid">
           <div className="brand-hero-copy">
             <p className="brand-eyebrow">{dict.hero.eyebrow}</p>
-            {isZh ? (
-              <h1 className="brand-hero-title hero-title-zh">
-                <span>把技术、思考与作品</span>
-                <span>
-                  接进证据链。<em>{dict.hero.accent}</em>
-                </span>
-              </h1>
-            ) : (
-              <h1 className="brand-hero-title">
-                <span>{dict.hero.title}</span>
-                <em>{dict.hero.accent}</em>
-              </h1>
-            )}
+            <h1 className="brand-hero-title">{dict.hero.title}</h1>
             <p className="brand-hero-subtitle">{dict.hero.intro_title}</p>
             <p className="brand-copy">{dict.hero.description}</p>
             <div className="brand-actions">
-              <a className="button-link primary-action" href={`/${lang}/thinking`}>
+              <a className="button-link primary-action" href={`/${lang}/projects`}>
                 {dict.hero.cta_primary}
               </a>
-              <a className="button-link" href={`/${lang}/projects`}>
+              <a className="button-link" href="#contact">
                 {dict.hero.cta_secondary}
               </a>
             </div>
-            <div className="hero-micro-nav" aria-label="ADRAGON signals">
-              <span>Open source</span>
-              <span>Receipts</span>
-              <span>Evidence</span>
-              <span>Solo OS</span>
-            </div>
           </div>
 
-          <StatusPanel dict={dict} />
+          <MetadataPanel dict={dict} />
         </div>
       </section>
 
-      <Section
-        id="flow"
-        label={dict.flow.label}
-        title={dict.flow.title}
-        intro={dict.flow.intro}
-      >
-        <div className="signal-strip" aria-label={dict.flow.label}>
-          {dict.flow.items.map(([title, body], index) => (
-            <article className="signal-step" key={title}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <strong>{title}</strong>
-              <p>{body}</p>
-            </article>
-          ))}
-        </div>
-      </Section>
-
       <section id="projects" className="section-frame">
         <div className="content-wrap brand-section-grid">
-          <p className="brand-label">{dict.projects.eyebrow}</p>
+          <p className="brand-label">{dict.home_sections.projects.label}</p>
           <div>
-            <h2 className="brand-section-title">{dict.projects.title}</h2>
+            <h2 className="brand-section-title">
+              {dict.home_sections.projects.title}
+            </h2>
             <p className="brand-copy brand-section-intro">
-              {dict.projects.description}
+              {dict.home_sections.projects.intro}
             </p>
 
             <div className="project-ledger">
@@ -99,104 +70,41 @@ export function HomeView({
             </div>
 
             <a className="quiet-link brand-more-link" href={`/${lang}/projects`}>
-              {dict.projects.view_all} -&gt;
+              {dict.home_sections.projects.view_all} -&gt;
             </a>
           </div>
         </div>
       </section>
 
-      <Section
-        id="notes"
-        label={dict.notes.label}
-        title={dict.notes.title}
-        intro={dict.notes.subtitle}
-      >
-        <div className="note-index">
-          {posts.length === 0 ? (
-            <p className="brand-copy">{dict.notes.empty}</p>
-          ) : (
-            posts.map((post) => (
-              <a
-                className="note-card"
-                href={`/${lang}/devlog/${post.slug}`}
-                key={post.slug}
-              >
-                <span>{post.date}</span>
-                <strong>{post.title}</strong>
-                {post.summary && <p>{post.summary}</p>}
-                <small>{post.channel}</small>
-              </a>
-            ))
-          )}
-        </div>
-        <div className="brand-note-links">
-          <a className="quiet-link" href={`/${lang}/blog`}>
-            {dict.notes.view_blog}
-          </a>
-          <a className="quiet-link" href={`/${lang}/thinking`}>
-            {dict.notes.view_thinking}
-          </a>
-          <a className="quiet-link" href={`/${lang}/devlog`}>
-            {dict.notes.view_all}
-          </a>
-          {canManageNotes && (
-            <a className="quiet-link" href={`/${lang}/admin`}>
-              {dict.notes.admin_label}
-            </a>
-          )}
-        </div>
-        {canManageNotes && <p className="brand-copy">{dict.notes.admin_hint}</p>}
-      </Section>
+      <WritingSection
+        id="tech-blog"
+        lang={lang}
+        label={dict.home_sections.tech_blog.label}
+        title={dict.home_sections.tech_blog.title}
+        intro={dict.home_sections.tech_blog.intro}
+        posts={techPosts}
+        empty={dict.home_sections.tech_blog.empty}
+        viewHref={`/${lang}/blog`}
+        viewLabel={dict.home_sections.tech_blog.view_all}
+      />
 
-      <Section
-        id="proof"
-        label={dict.proof.label}
-        title={dict.proof.title}
-        intro={dict.proof.intro}
-      >
-        <div className="proof-shelf">
-          {dict.proof.items.map(([title, body]) => (
-            <article key={title}>
-              <strong>{title}</strong>
-              <p>{body}</p>
-            </article>
-          ))}
-        </div>
-      </Section>
+      <WritingSection
+        id="thinking"
+        lang={lang}
+        label={dict.home_sections.thinking.label}
+        title={dict.home_sections.thinking.title}
+        intro={dict.home_sections.thinking.intro}
+        posts={thinkingPosts}
+        empty={dict.home_sections.thinking.empty}
+        viewHref={`/${lang}/thinking`}
+        viewLabel={dict.home_sections.thinking.view_all}
+      />
 
-      <Section
-        id="about"
-        label={dict.builder.label}
-        title={dict.builder.title}
-        intro={dict.builder.body}
-      >
-        <div className="builder-note">
-          <h3>{dict.builder.second_title}</h3>
-          <p>{dict.builder.second_body}</p>
-        </div>
-      </Section>
-
-      <Section
-        id="contact"
-        label={dict.offers.label}
-        title={dict.offers.title}
-        intro={dict.offers.intro}
-      >
-        <div className="offer-grid">
-          {dict.offers.items.map((offer) => (
-            <article className="offer-card" key={offer.title}>
-              <h3>{offer.title}</h3>
-              <p>{offer.body}</p>
-              <strong>{offer.price}</strong>
-            </article>
-          ))}
-        </div>
-      </Section>
-
-      <footer>
+      <footer id="contact" className="section-frame">
         <div className="content-wrap brand-footer">
           <div>
-            <p className="brand-label">{dict.contact.title}</p>
+            <p className="brand-label">{dict.contact.label}</p>
+            <h2 className="brand-section-title">{dict.contact.title}</h2>
             <p className="brand-footer-copy">{dict.contact.body}</p>
             <div className="brand-footer-links">
               <a
@@ -218,6 +126,11 @@ export function HomeView({
               >
                 {dict.contact.public_url_label}
               </a>
+              {canManageNotes && (
+                <a className="quiet-link" href={`/${lang}/admin`}>
+                  {dict.contact.admin_label}
+                </a>
+              )}
             </div>
           </div>
 
@@ -240,6 +153,55 @@ export function HomeView({
         </div>
       </footer>
     </main>
+  );
+}
+
+function WritingSection({
+  id,
+  lang,
+  label,
+  title,
+  intro,
+  posts,
+  empty,
+  viewHref,
+  viewLabel,
+}: {
+  id: string;
+  lang: Locale;
+  label: string;
+  title: string;
+  intro: string;
+  posts: PostMeta[];
+  empty: string;
+  viewHref: string;
+  viewLabel: string;
+}) {
+  return (
+    <Section id={id} label={label} title={title} intro={intro}>
+      <div className="note-index">
+        {posts.length === 0 ? (
+          <p className="brand-copy">{empty}</p>
+        ) : (
+          posts.map((post) => (
+            <a
+              className="note-card"
+              href={`/${lang}/devlog/${post.slug}`}
+              key={post.slug}
+            >
+              <span>{post.date}</span>
+              <strong>{post.title}</strong>
+              {post.summary && <p>{post.summary}</p>}
+            </a>
+          ))
+        )}
+      </div>
+      <div className="brand-note-links">
+        <a className="quiet-link" href={viewHref}>
+          {viewLabel} -&gt;
+        </a>
+      </div>
+    </Section>
   );
 }
 
@@ -270,24 +232,18 @@ function Section({
   );
 }
 
-function StatusPanel({ dict }: { dict: HomeDict }) {
+function MetadataPanel({ dict }: { dict: HomeDict }) {
   return (
-    <aside className="status-panel" aria-label={dict.status.label}>
-      <div className="status-panel-top">
-        <strong>Agent Flight Recorder</strong>
-        <span>SACP canvas · public protocol · GitHub</span>
-      </div>
+    <aside className="builder-note" aria-label={dict.status.label}>
+      <h2>{dict.status.title}</h2>
       <div className="status-stack">
-        <div>
-          <span>ShadowBuyer</span>
-          <strong>Web evidence audit · PDF proof · redacted samples</strong>
-        </div>
-        <div>
-          <span>Solo AI Company OS</span>
-          <strong>Operating memory · handoffs · reusable skills</strong>
-        </div>
+        {dict.status.items.map(([label, value]) => (
+          <div key={label}>
+            <span>{label}</span>
+            <strong>{value}</strong>
+          </div>
+        ))}
       </div>
-      <blockquote>{dict.status.quote}</blockquote>
     </aside>
   );
 }
@@ -320,25 +276,6 @@ function ProjectCard({
           ))}
         </div>
       </div>
-
-      <dl>
-        <div>
-          <dt>Problem</dt>
-          <dd>{project.problem}</dd>
-        </div>
-        <div>
-          <dt>Protocol</dt>
-          <dd>{project.thesis}</dd>
-        </div>
-        <div>
-          <dt>Trace</dt>
-          <dd>{project.system}</dd>
-        </div>
-        <div>
-          <dt>Next</dt>
-          <dd>{project.next}</dd>
-        </div>
-      </dl>
 
       <div className="project-proof-links">
         <a

@@ -14,25 +14,57 @@ export const zh: Dictionary = {
   },
   home: {
     hero: {
-      eyebrow: "AGENTIC EVIDENCE ENGINEERING",
-      title: "不要从智能体开始。",
-      accent: "先定义证据流。",
+      eyebrow: "AI AGENT 系统构建者",
+      title: "我构建面向网页证据和一人公司的 AI Agent 系统。",
+      accent: "",
       intro_title:
-        "ADRAGON 把 Agent 工作转成回执、网页证据，以及可被复用和检查的个人操作系统。",
+        "ADRAGON 是我的个人技术作品集：Agent 工作流、审计工具，以及把混乱工作整理成可检查产品的操作系统。",
       description:
-        "今天可以公开检查的证据：Agent Flight Recorder、ShadowBuyer，以及支撑一人公司持续运行的工具。",
-      cta_primary: "查看在线系统",
-      cta_secondary: "找到你的路径",
+        "我关注 AI Agent、公开网页数据、开发者工具，以及能长期复用的个人工作系统。",
+      cta_primary: "查看项目",
+      cta_secondary: "联系",
       github_href: "https://github.com/aDragon0707",
     },
     status: {
-      label: "信号",
+      label: "基本信息",
+      title: "构建者信息",
       now: "正在交付",
       system: "Agent Flight Recorder + ShadowBuyer",
       pulse: "实时证据",
       pulse_body:
         "声明变成可检查的工件，审计变成证明，证明变成访客可以打开的对象。",
       quote: "信任来自回执，不来自感觉。",
+      items: [
+        ["角色", "AI Agent 系统构建者"],
+        ["方向", "网页证据、工作流可靠性、一人公司系统"],
+        ["当前项目", "ShadowBuyer、Agent Flight Recorder、Solo AI Company OS"],
+        ["位置", "上海，支持远程协作"],
+      ],
+    },
+    home_sections: {
+      projects: {
+        label: "项目",
+        title: "我正在构建的系统。",
+        intro:
+          "项目展示我的主要工作：审计 Agent、Agent 可靠性工具，以及用 AI 协助个人长期构建的操作系统。",
+        view_all: "查看全部项目",
+      },
+      tech_blog: {
+        label: "技术博客",
+        title: "工程笔记。",
+        intro:
+          "记录 AI Agent、工作流可靠性、公开网页数据和实现取舍。",
+        view_all: "打开技术博客",
+        empty: "还没有技术文章。",
+      },
+      thinking: {
+        label: "个人思考",
+        title: "公开整理思考。",
+        intro:
+          "关于学习、判断、一人公司实践，以及如何成为更完整的操作者。",
+        view_all: "打开思考归档",
+        empty: "还没有思考笔记。",
+      },
     },
     flow: {
       label: "操作架构",
@@ -240,9 +272,10 @@ export const zh: Dictionary = {
       ],
     },
     contact: {
-      title: "联系",
+      label: "联系",
+      title: "联系我，或继续看这些系统。",
       body:
-        "可以通过 GitHub 或邮箱联系我。我尤其关注 AI Agent 可靠性、网页数据证据、开发者工具和一人公司系统。",
+        "可以通过 GitHub 或邮箱联系我。我关注 AI Agent 可靠性、网页数据证据、开发者工具和一人公司系统。",
       github: "GitHub: aDragon0707",
       github_href: "https://github.com/aDragon0707",
       email_label: "Email: adragon@alantern.com",
@@ -250,6 +283,7 @@ export const zh: Dictionary = {
       public_url_label: "公开站点",
       public_url: "https://adragons-portfolio.vercel.app/zh",
       qr_label: "扫码打开本站",
+      admin_label: "打开写作台",
       footer: "个人技术作品集，使用 Next.js 和 Tailwind CSS 构建。",
     },
   },

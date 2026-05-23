@@ -3,19 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --paper: oklch(0.992 0.004 300);
-  --surface: oklch(0.982 0.006 300);
-  --surface-2: oklch(0.965 0.012 300);
-  --ink: oklch(0.23 0.018 300);
-  --muted: oklch(0.56 0.035 292);
-  --faint: oklch(0.68 0.03 292);
-  --line: oklch(0.88 0.018 300);
-  --line-strong: oklch(0.79 0.04 295);
-  --blue: oklch(0.67 0.18 295);
+  --paper: oklch(0.994 0.003 285);
+  --surface: oklch(0.985 0.004 285);
+  --surface-2: oklch(0.972 0.007 285);
+  --ink: oklch(0.23 0.016 285);
+  --muted: oklch(0.54 0.026 285);
+  --faint: oklch(0.67 0.018 285);
+  --line: oklch(0.885 0.01 285);
+  --line-strong: oklch(0.82 0.018 285);
+  --blue: oklch(0.62 0.14 268);
   --green: oklch(0.55 0.11 155);
   --amber: oklch(0.66 0.14 72);
-  --purple: oklch(0.72 0.2 295);
-  --soft-purple: oklch(0.92 0.05 296);
+  --purple: oklch(0.58 0.12 298);
+  --soft-purple: oklch(0.95 0.012 295);
   --font-ui: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", "Noto Sans SC", "Source Han Sans SC", "PingFang SC",
     "Microsoft YaHei", sans-serif;
@@ -38,8 +38,7 @@ html {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at 70% 10%, oklch(0.9 0.06 295 / 0.3), transparent 22rem),
-    linear-gradient(180deg, var(--paper), oklch(0.985 0.006 295) 55rem),
+    linear-gradient(180deg, var(--paper), oklch(0.988 0.004 285) 55rem),
     var(--paper);
   color: var(--ink);
   font-family: var(--font-ui);
@@ -75,7 +74,7 @@ a {
 .content-wrap {
   margin-inline: auto;
   max-width: 92rem;
-  padding-inline: 1.5rem;
+  padding-inline: 1.25rem;
 }
 
 .measure {
@@ -116,7 +115,7 @@ a {
 
 .quiet-link {
   color: var(--blue);
-  font-weight: 700;
+  font-weight: 650;
   text-decoration-line: underline;
 }
 
@@ -129,10 +128,10 @@ a {
 
 .brand-logo span {
   background:
-    radial-gradient(circle at 35% 35%, oklch(0.98 0.02 300), transparent 34%),
-    linear-gradient(90deg, oklch(0.38 0.04 300), var(--purple));
+    radial-gradient(circle at 35% 35%, oklch(0.98 0.01 285), transparent 34%),
+    linear-gradient(90deg, oklch(0.42 0.03 285), var(--blue));
   border-radius: 999px;
-  box-shadow: 0 0 20px oklch(0.72 0.2 295 / 0.2);
+  box-shadow: 0 0 0 1px oklch(0.42 0.03 285 / 0.08);
   height: 1rem;
   width: 1rem;
 }
@@ -200,9 +199,9 @@ a {
   border-radius: 999px;
   color: var(--blue);
   display: inline-flex;
-  font-weight: 750;
-  min-height: 3.3rem;
-  padding: 0.85rem 1.45rem;
+  font-weight: 700;
+  min-height: 2.9rem;
+  padding: 0.75rem 1.15rem;
   text-decoration: none;
   transition:
     background-color 0.24s ease,
@@ -215,20 +214,20 @@ a {
 .button-link:hover,
 .button-link:focus-visible {
   background: var(--soft-purple);
-  border-color: oklch(0.82 0.08 295);
+  border-color: oklch(0.78 0.03 285);
   outline: none;
   transform: translateY(-1px);
 }
 
 .primary-action {
   background: var(--purple);
-  box-shadow: 0 16px 34px oklch(0.72 0.2 295 / 0.22);
+  box-shadow: 0 10px 22px oklch(0.38 0.04 285 / 0.15);
   color: oklch(0.99 0.004 300);
 }
 
 .primary-action:hover,
 .primary-action:focus-visible {
-  background: oklch(0.66 0.2 295);
+  background: oklch(0.53 0.13 298);
   border-color: transparent;
   color: oklch(0.99 0.004 300);
 }
@@ -244,10 +243,10 @@ a {
 .builder-note,
 .proof-shelf article,
 .signal-step {
-  background: oklch(1 0 0 / 0.72);
+  background: oklch(1 0 0 / 0.8);
   border: 1px solid var(--line);
-  border-radius: 24px;
-  box-shadow: 0 20px 50px oklch(0.52 0.08 295 / 0.08);
+  border-radius: 18px;
+  box-shadow: 0 10px 28px oklch(0.24 0.02 285 / 0.06);
 }
 
 .project-proof,
@@ -274,7 +273,7 @@ a {
 .signal-step:hover,
 .qr-card:hover {
   border-color: var(--line-strong);
-  box-shadow: 0 24px 60px oklch(0.55 0.12 295 / 0.12);
+  box-shadow: 0 14px 32px oklch(0.24 0.02 285 / 0.09);
   transform: translateY(-2px);
 }
 
@@ -295,7 +294,7 @@ a {
   color: var(--faint);
   font-size: 0.76rem;
   font-weight: 750;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -306,7 +305,7 @@ a {
   color: var(--muted);
   font-size: 0.76rem;
   letter-spacing: 0.06em;
-  padding: 0.38rem 0.7rem;
+  padding: 0.32rem 0.62rem;
   text-transform: none;
 }
 
@@ -338,7 +337,7 @@ a {
 .brand-hero-grid,
 .signal-strip {
   display: grid;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .brand-hero {
@@ -349,9 +348,9 @@ a {
 .brand-hero-grid {
   align-items: start;
   display: grid;
-  gap: clamp(2rem, 4vw, 4rem);
+  gap: clamp(1.5rem, 3vw, 3rem);
   grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.8fr);
-  padding-block: clamp(5.5rem, 9vw, 8rem) clamp(3rem, 6vw, 5rem);
+  padding-block: clamp(4.25rem, 7vw, 6.5rem) clamp(2.4rem, 4vw, 4rem);
 }
 
 .brand-hero-copy {
@@ -360,16 +359,16 @@ a {
 }
 
 .brand-eyebrow {
-  color: var(--purple);
+  color: var(--faint);
   font-size: 0.9rem;
   font-weight: 850;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.22em;
   line-height: 1.4;
   text-transform: uppercase;
 }
 
 .brand-eyebrow::before {
-  background: var(--purple);
+  background: var(--blue);
   border-radius: 999px;
   content: "";
   display: inline-block;
@@ -381,11 +380,11 @@ a {
 
 .brand-hero-title {
   color: var(--ink);
-  font-size: clamp(4.4rem, 8.6vw, 8.8rem);
+  font-size: clamp(4rem, 7.8vw, 7.6rem);
   font-weight: 500;
   letter-spacing: 0;
   line-height: 0.96;
-  margin-top: 2.3rem;
+  margin-top: 2rem;
   display: block;
   max-width: 100%;
 }
@@ -407,7 +406,7 @@ a {
 }
 
 .brand-hero-title em {
-  color: var(--purple);
+  color: var(--blue);
   font-style: italic;
   display: inline-block;
   margin-left: 0.3em;
@@ -425,16 +424,16 @@ a {
 
 .brand-hero-subtitle {
   color: var(--muted);
-  font-size: clamp(1.15rem, 1.55vw, 1.45rem);
-  line-height: 1.8;
-  margin-top: 2.4rem;
+  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  line-height: 1.75;
+  margin-top: 1.9rem;
   max-width: 44rem;
 }
 
 .brand-copy {
   color: var(--muted);
-  font-size: 1.02rem;
-  line-height: 1.86;
+  font-size: 0.98rem;
+  line-height: 1.8;
   margin-top: 1rem;
   max-width: 58ch;
 }
@@ -442,17 +441,17 @@ a {
 .brand-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.2rem;
-  margin-top: 2.4rem;
+  gap: 0.85rem;
+  margin-top: 1.8rem;
 }
 
 .hero-micro-nav {
   color: var(--faint);
   display: flex;
   flex-wrap: wrap;
-  gap: clamp(1.6rem, 5vw, 4.5rem);
-  letter-spacing: 0.12em;
-  margin-top: 3.8rem;
+  gap: clamp(1.1rem, 3vw, 2.6rem);
+  letter-spacing: 0.09em;
+  margin-top: 2.4rem;
 }
 
 .hero-micro-nav span {
@@ -461,9 +460,9 @@ a {
 
 .status-panel {
   align-self: end;
-  border-radius: 26px;
-  margin-top: 12rem;
-  padding: 1.55rem;
+  border-radius: 18px;
+  margin-top: 8.5rem;
+  padding: 1.2rem;
 }
 
 .status-panel::before {
@@ -485,13 +484,13 @@ a {
 
 .status-panel-top {
   border-bottom: 1px solid var(--line);
-  padding-bottom: 1rem;
+  padding-bottom: 0.85rem;
 }
 
 .status-panel-top strong {
   color: var(--ink);
   font-family: var(--font-latin-serif);
-  font-size: 1.25rem;
+  font-size: 1.08rem;
   font-style: italic;
   font-weight: 700;
 }
@@ -504,19 +503,19 @@ a {
 }
 
 .status-stack {
-  padding-top: 1rem;
+  padding-top: 0.85rem;
 }
 
 .status-stack div {
   display: grid;
-  gap: 0.32rem;
-  padding-block: 0.35rem;
+  gap: 0.3rem;
+  padding-block: 0.28rem;
 }
 
 .status-stack strong {
   color: var(--ink);
-  font-size: 0.98rem;
-  line-height: 1.7;
+  font-size: 0.94rem;
+  line-height: 1.65;
 }
 
 .status-panel blockquote {
@@ -528,7 +527,7 @@ a {
 
 .brand-section-grid {
   grid-template-columns: 11rem minmax(0, 1fr);
-  padding-block: clamp(3.2rem, 5vw, 5.5rem);
+  padding-block: clamp(2.6rem, 4.2vw, 4.8rem);
 }
 
 .brand-section-grid > div {
@@ -538,12 +537,12 @@ a {
 
 .brand-section-title {
   color: var(--ink);
-  font-size: clamp(2rem, 3vw, 3.25rem);
+  font-size: clamp(1.8rem, 2.6vw, 2.8rem);
   font-weight: 500;
-  line-height: 1.03;
+  line-height: 1.08;
   max-width: none;
-  white-space: nowrap;
-  text-wrap: nowrap;
+  white-space: normal;
+  text-wrap: balance;
 }
 
 .brand-section-intro {
@@ -555,7 +554,7 @@ a {
 }
 
 .signal-step {
-  padding: 1.1rem;
+  padding: 0.95rem;
 }
 
 .signal-step strong,
@@ -569,7 +568,7 @@ a {
 .builder-note h3 {
   color: var(--ink);
   display: block;
-  font-size: 1rem;
+  font-size: 0.98rem;
   font-weight: 750;
   line-height: 1.45;
 }
@@ -584,18 +583,18 @@ a {
 .project-ledger-card p,
 .builder-note p {
   color: var(--muted);
-  line-height: 1.75;
-  margin-top: 0.7rem;
+  line-height: 1.72;
+  margin-top: 0.6rem;
 }
 
 .project-ledger {
   display: grid;
-  gap: 1rem;
-  margin-top: 1.25rem;
+  gap: 0.9rem;
+  margin-top: 1rem;
 }
 
 .project-proof {
-  padding: 1.3rem;
+  padding: 1.1rem;
 }
 
 .project-proof.is-priority {
@@ -604,8 +603,8 @@ a {
 
 .project-proof dl {
   display: grid;
-  gap: 0.85rem;
-  margin-top: 1rem;
+  gap: 0.72rem;
+  margin-top: 0.9rem;
 }
 
 .project-proof dl div {
@@ -618,7 +617,7 @@ a {
   color: var(--faint);
   font-size: 0.72rem;
   font-weight: 750;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -631,19 +630,19 @@ a {
 .project-proof-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.85rem;
-  margin-top: 1.05rem;
+  gap: 0.65rem;
+  margin-top: 0.9rem;
 }
 
 .note-index {
   display: grid;
-  gap: 0.9rem;
+  gap: 0.75rem;
 }
 
 .note-card {
   display: grid;
-  gap: 0.55rem;
-  padding: 1.2rem;
+  gap: 0.45rem;
+  padding: 1rem;
   text-decoration: none;
 }
 
@@ -666,19 +665,19 @@ a {
 .proof-shelf article,
 .offer-card,
 .builder-note {
-  padding: 1.25rem;
+  padding: 1.05rem;
 }
 
 .brand-footer {
   display: grid;
-  gap: 1.6rem;
+  gap: 1.2rem;
   grid-template-columns: minmax(0, 1fr) minmax(18rem, 25rem);
-  padding-block: 2.5rem 4rem;
+  padding-block: 2.2rem 3.5rem;
 }
 
 .brand-footer-copy {
   color: var(--muted);
-  line-height: 1.85;
+  line-height: 1.78;
   margin-top: 0.75rem;
   max-width: 54ch;
 }
@@ -686,31 +685,31 @@ a {
 .qr-card {
   align-items: start;
   display: grid;
-  gap: 1rem;
-  padding: 1.1rem;
+  gap: 0.85rem;
+  padding: 1rem;
 }
 
 .qr-card img {
   aspect-ratio: 1 / 1;
-  background: oklch(0.99 0.004 300);
+  background: oklch(0.99 0.004 285);
   border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 0.5rem;
-  width: 8.5rem;
+  border-radius: 14px;
+  padding: 0.45rem;
+  width: 7.5rem;
 }
 
 .archive-shell,
 .project-ledger-page {
-  padding-block: 2.8rem 5rem;
+  padding-block: 2.4rem 4.4rem;
 }
 
 .archive-header {
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.4rem;
 }
 
 .archive-header h1 {
   color: var(--ink);
-  font-size: clamp(3.8rem, 7vw, 7.2rem);
+  font-size: clamp(3.2rem, 6.2vw, 6.2rem);
   font-weight: 500;
   line-height: 1;
   max-width: 12ch;
@@ -718,18 +717,18 @@ a {
 
 .archive-header p:last-child {
   color: var(--muted);
-  font-size: 1.08rem;
-  line-height: 1.82;
+  font-size: 1rem;
+  line-height: 1.78;
   max-width: 56ch;
 }
 
 .archive-layout {
-  gap: 1rem;
+  gap: 0.8rem;
 }
 
 .featured-note,
 .archive-row {
-  padding: 1.2rem;
+  padding: 1rem;
   text-decoration: none;
 }
 
@@ -746,48 +745,48 @@ a {
 
 .archive-list {
   display: grid;
-  gap: 0.9rem;
+  gap: 0.75rem;
 }
 
 .archive-row {
-  grid-template-columns: 8rem minmax(0, 1fr);
+  grid-template-columns: 7rem minmax(0, 1fr);
 }
 
 .project-ledger-list {
-  gap: 1rem;
+  gap: 0.9rem;
 }
 
 .project-ledger-card {
-  grid-template-columns: 5rem minmax(0, 0.9fr) minmax(0, 1.1fr);
-  padding: 1.25rem;
+  grid-template-columns: 4.25rem minmax(0, 0.9fr) minmax(0, 1.1fr);
+  padding: 1rem;
 }
 
 .project-ledger-card h2 {
-  font-size: clamp(1.6rem, 2.8vw, 2.7rem);
+  font-size: clamp(1.45rem, 2.4vw, 2.3rem);
   font-weight: 600;
   line-height: 1.05;
 }
 
 .project-ledger-index {
   color: var(--blue);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
 }
 
 .project-ledger-main {
   display: grid;
-  gap: 0.8rem;
+  gap: 0.7rem;
 }
 
 .project-ledger-spec {
   display: grid;
-  gap: 0.8rem;
+  gap: 0.7rem;
 }
 
 .article-shell,
 .article-rail {
-  padding-block: 2.8rem 5rem;
+  padding-block: 2.4rem 4.4rem;
 }
 
 .article-kicker {
@@ -799,8 +798,8 @@ a {
 
 .article-header {
   display: grid;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 0.85rem;
+  margin-bottom: 1.2rem;
 }
 
 .article-header time {
@@ -810,7 +809,7 @@ a {
 
 .article-title {
   color: var(--ink);
-  font-size: clamp(3.2rem, 6vw, 6.6rem);
+  font-size: clamp(2.9rem, 5.3vw, 5.8rem);
   font-weight: 500;
   line-height: 1;
   max-width: 14ch;
@@ -819,15 +818,15 @@ a {
 
 .article-header p {
   color: var(--muted);
-  font-size: 1.08rem;
-  line-height: 1.85;
+  font-size: 1rem;
+  line-height: 1.78;
   max-width: 54ch;
 }
 
 .devlog-prose {
   color: var(--ink);
-  font-size: clamp(1rem, 1.25vw, 1.08rem);
-  line-height: 1.92;
+  font-size: 1rem;
+  line-height: 1.88;
   max-width: 58rem;
 }
 
@@ -837,16 +836,16 @@ a {
 
 .devlog-prose > h2 {
   color: var(--ink);
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
   line-height: 1.25;
-  margin-top: 3rem;
+  margin-top: 2.4rem;
 }
 
 .devlog-prose > h3 {
   color: var(--ink);
-  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
   line-height: 1.3;
-  margin-top: 2.2rem;
+  margin-top: 1.8rem;
 }
 
 .devlog-prose p {
@@ -870,13 +869,13 @@ a {
 .devlog-prose pre {
   background: var(--surface) !important;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 14px;
 }
 
 .devlog-prose code:not(pre code) {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 6px;
   color: var(--ink);
   font-size: 0.875em;
   padding: 0.1em 0.35em;
@@ -885,10 +884,10 @@ a {
 .devlog-prose blockquote {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 14px;
   font-style: normal;
-  margin: 1.75rem 0;
-  padding: 0.95rem 1.1rem;
+  margin: 1.5rem 0;
+  padding: 0.9rem 1rem;
 }
 
 .devlog-prose h2,
@@ -911,7 +910,7 @@ a {
   border: 1px solid transparent;
   border-radius: 999px;
   bottom: 1rem;
-  box-shadow: 0 16px 34px oklch(0.72 0.2 295 / 0.22);
+  box-shadow: 0 10px 22px oklch(0.38 0.04 285 / 0.15);
   color: oklch(0.99 0.004 300);
   font-size: 0.85rem;
   font-weight: 700;
@@ -932,10 +931,10 @@ a {
 .annotate-toolbar {
   align-items: center;
   background: oklch(1 0 0 / 0.92);
-  border: 1px solid var(--line-strong);
+  border: 1px solid var(--line);
   border-radius: 999px;
   bottom: 1rem;
-  box-shadow: 0 16px 40px oklch(0.52 0.08 295 / 0.16);
+  box-shadow: 0 10px 22px oklch(0.24 0.02 285 / 0.12);
   color: var(--ink);
   display: flex;
   gap: 0.8rem;
@@ -954,7 +953,7 @@ a {
 
 .annotate-toolbar button,
 .annotate-panel button {
-  border: 1px solid var(--line-strong);
+  border: 1px solid var(--line);
   border-radius: 999px;
   font-size: 0.82rem;
   font-weight: 700;
@@ -966,9 +965,9 @@ a {
 }
 
 .ui-annotate-hover {
-  border: 2px solid var(--purple);
+  border: 2px solid var(--blue);
   border-radius: 12px;
-  box-shadow: 0 0 0 4px oklch(0.72 0.2 295 / 0.14);
+  box-shadow: 0 0 0 4px oklch(0.62 0.14 268 / 0.14);
   display: none;
   left: 0;
   pointer-events: none;
@@ -979,10 +978,10 @@ a {
 
 .annotate-panel {
   background: oklch(1 0 0 / 0.96);
-  border: 1px solid var(--line-strong);
-  border-radius: 18px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
   bottom: 4.25rem;
-  box-shadow: 0 24px 60px oklch(0.52 0.08 295 / 0.16);
+  box-shadow: 0 14px 32px oklch(0.24 0.02 285 / 0.14);
   display: grid;
   gap: 0.75rem;
   max-width: min(28rem, calc(100vw - 2rem));
@@ -1008,7 +1007,7 @@ a {
 .annotate-panel textarea {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: 12px;
   color: var(--ink);
   font-size: 0.95rem;
   line-height: 1.6;
@@ -1018,14 +1017,14 @@ a {
 }
 
 .annotate-panel textarea:focus {
-  border-color: var(--purple);
+  border-color: var(--blue);
   outline: none;
 }
 
 .annotate-fallback {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: 12px;
   color: var(--muted);
   font-size: 0.75rem;
   line-height: 1.5;
@@ -1051,7 +1050,7 @@ a {
 
 @media (min-width: 768px) {
   .content-wrap {
-    padding-inline: 2rem;
+    padding-inline: 1.75rem;
   }
 
   .project-card {
@@ -1081,7 +1080,7 @@ a {
   }
 
   .project-ledger-card {
-    grid-template-columns: 4rem minmax(0, 1fr);
+    grid-template-columns: 3.5rem minmax(0, 1fr);
   }
 
   .project-ledger-spec,
@@ -1100,12 +1099,12 @@ a {
   }
 
   .brand-hero-grid {
-    padding-block: 3.5rem 2.6rem;
+    padding-block: 3rem 2.2rem;
   }
 
   .brand-hero-title,
   .cjk-safe .brand-hero-title {
-    font-size: clamp(3.2rem, 17vw, 5rem);
+    font-size: clamp(3rem, 16vw, 4.6rem);
     display: block;
     max-width: 10ch;
     white-space: normal;
@@ -1125,12 +1124,12 @@ a {
   }
 
   .brand-section-title {
-    font-size: clamp(1.8rem, 10vw, 2.6rem);
+    font-size: clamp(1.65rem, 9vw, 2.25rem);
     white-space: normal;
   }
 
   .archive-header h1 {
-    font-size: clamp(3rem, 14vw, 5.2rem);
+    font-size: clamp(2.7rem, 13vw, 4.6rem);
   }
 
   .proof-shelf,
