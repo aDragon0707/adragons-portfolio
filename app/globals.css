@@ -17,10 +17,10 @@
   --purple: oklch(0.58 0.12 298);
   --soft-purple: oklch(0.95 0.012 295);
   --font-ui: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", "Noto Sans SC", "Source Han Sans SC", "PingFang SC",
-    "Microsoft YaHei", sans-serif;
-  --font-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC",
-    "STSong", "SimSun", serif;
+    "Segoe UI", "PingFang SC", "HarmonyOS Sans SC", "Noto Sans SC",
+    "Source Han Sans SC", "Microsoft YaHei", sans-serif;
+  --font-serif: "PingFang SC", "HarmonyOS Sans SC", "Noto Sans SC",
+    "Source Han Sans SC", "Microsoft YaHei", sans-serif;
   --font-latin-serif: "Iowan Old Style", "Palatino Linotype", Palatino,
     Charter, Georgia, "Times New Roman", serif;
 }
@@ -349,12 +349,12 @@ a {
   align-items: start;
   display: grid;
   gap: clamp(1.5rem, 3vw, 3rem);
-  grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.8fr);
+  grid-template-columns: minmax(0, 1.08fr) minmax(19rem, 0.82fr);
   padding-block: clamp(4.25rem, 7vw, 6.5rem) clamp(2.4rem, 4vw, 4rem);
 }
 
 .brand-hero-copy {
-  align-self: center;
+  align-self: start;
   text-align: left;
 }
 
@@ -380,11 +380,11 @@ a {
 
 .brand-hero-title {
   color: var(--ink);
-  font-size: clamp(4rem, 7.8vw, 7.6rem);
-  font-weight: 500;
+  font-size: clamp(3.6rem, 6.6vw, 6.9rem);
+  font-weight: 580;
   letter-spacing: 0;
-  line-height: 0.96;
-  margin-top: 2rem;
+  line-height: 0.98;
+  margin-top: 1.9rem;
   display: block;
   max-width: 100%;
 }
@@ -418,8 +418,10 @@ a {
 }
 
 .cjk-safe .brand-hero-title {
-  font-size: clamp(4rem, 8vw, 8.2rem);
-  line-height: 1.04;
+  font-size: clamp(3.9rem, 6.3vw, 6.6rem);
+  font-weight: 650;
+  line-height: 1.06;
+  letter-spacing: -0.015em;
 }
 
 .brand-hero-subtitle {
@@ -666,6 +668,11 @@ a {
 .offer-card,
 .builder-note {
   padding: 1.05rem;
+}
+
+.brand-hero-grid > .builder-note {
+  align-self: start;
+  margin-top: clamp(3.6rem, 5.6vw, 5.2rem);
 }
 
 .brand-footer {
@@ -1116,6 +1123,10 @@ a {
   }
 
   .status-panel {
+    margin-top: 0;
+  }
+
+  .brand-hero-grid > .builder-note {
     margin-top: 0;
   }
 

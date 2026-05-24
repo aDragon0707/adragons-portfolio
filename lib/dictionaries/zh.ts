@@ -38,7 +38,7 @@ export const zh: Dictionary = {
         ["角色", "AI Agent 系统构建者"],
         ["方向", "网页证据、工作流可靠性、一人公司系统"],
         ["当前项目", "ShadowBuyer、Agent Flight Recorder、Solo AI Company OS"],
-        ["位置", "上海，支持远程协作"],
+        ["协作", "支持远程协作"],
       ],
     },
     home_sections: {

@@ -36,7 +36,7 @@ export const en = {
         ["Role", "AI agent system builder"],
         ["Focus", "Web evidence, workflow reliability, solo-company systems"],
         ["Current work", "ShadowBuyer, Agent Flight Recorder, Solo AI Company OS"],
-        ["Base", "Shanghai, remote-friendly"],
+        ["Collaboration", "Remote-friendly"],
       ],
     },
     home_sections: {
