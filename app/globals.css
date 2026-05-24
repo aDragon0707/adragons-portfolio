@@ -16,13 +16,13 @@
   --amber: oklch(0.66 0.14 72);
   --purple: oklch(0.58 0.12 298);
   --soft-purple: oklch(0.95 0.012 295);
-  --font-ui: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", "PingFang SC", "HarmonyOS Sans SC", "Noto Sans SC",
-    "Source Han Sans SC", "Microsoft YaHei", sans-serif;
-  --font-serif: "PingFang SC", "HarmonyOS Sans SC", "Noto Sans SC",
-    "Source Han Sans SC", "Microsoft YaHei", sans-serif;
-  --font-latin-serif: "Iowan Old Style", "Palatino Linotype", Palatino,
-    Charter, Georgia, "Times New Roman", serif;
+  --font-ui: var(--font-noto-sans-sc), ui-sans-serif, system-ui,
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Microsoft YaHei", sans-serif;
+  --font-serif: var(--font-noto-serif-sc), "Source Han Serif SC",
+    "Songti SC", "STSong", serif;
+  --font-latin-serif: var(--font-source-serif), Georgia, "Times New Roman",
+    serif;
 }
 
 * {
@@ -137,9 +137,9 @@ a {
 }
 
 .brand-logo strong {
-  font-family: var(--font-latin-serif);
-  font-size: 1.55rem;
-  font-weight: 700;
+  font-family: var(--font-ui);
+  font-size: 1.45rem;
+  font-weight: 800;
   letter-spacing: 0;
 }
 
@@ -380,10 +380,10 @@ a {
 
 .brand-hero-title {
   color: var(--ink);
-  font-size: clamp(3.6rem, 6.6vw, 6.9rem);
-  font-weight: 580;
-  letter-spacing: 0;
-  line-height: 0.98;
+  font-size: clamp(3.4rem, 6.1vw, 6.4rem);
+  font-weight: 600;
+  letter-spacing: -0.018em;
+  line-height: 1;
   margin-top: 1.9rem;
   display: block;
   max-width: 100%;
@@ -418,10 +418,10 @@ a {
 }
 
 .cjk-safe .brand-hero-title {
-  font-size: clamp(3.9rem, 6.3vw, 6.6rem);
-  font-weight: 650;
-  line-height: 1.06;
-  letter-spacing: -0.015em;
+  font-size: clamp(3.45rem, 5.65vw, 5.9rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
 }
 
 .brand-hero-subtitle {
@@ -540,8 +540,9 @@ a {
 .brand-section-title {
   color: var(--ink);
   font-size: clamp(1.8rem, 2.6vw, 2.8rem);
-  font-weight: 500;
-  line-height: 1.08;
+  font-weight: 600;
+  letter-spacing: -0.018em;
+  line-height: 1.14;
   max-width: none;
   white-space: normal;
   text-wrap: balance;
