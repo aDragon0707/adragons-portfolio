@@ -8,3 +8,4 @@ ip-refresh-preview*.png
 site-*-refresh*.png
 site-*.png
 dev-server*.log
+.codegraph/
