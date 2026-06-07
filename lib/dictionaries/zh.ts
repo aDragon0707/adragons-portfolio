@@ -85,9 +85,42 @@ export const zh: Dictionary = {
       description:
         "它们定义公开叙事：Agent 回执、网页证据，以及让一个人持续复利且不丢失品味的操作系统。",
       view_all: "打开系统台账",
+      groups: [
+        {
+          key: "cashflow",
+          label: "现金流证据",
+          caption:
+            "最接近付费试点。把公开页面证据整理成买家可复查的一页审计。",
+        },
+        {
+          key: "agent_trust",
+          label: "Agent 信任证据",
+          caption:
+            "用回执、声明边界和复核门槛让 Agent 工作可被检查。",
+        },
+        {
+          key: "os",
+          label: "操作系统证据",
+          caption:
+            "一个人协调多个 AI worker 的长期结构。",
+        },
+        {
+          key: "learning",
+          label: "学习系统",
+          caption:
+            "操作者背后的复利循环：阅读、语言、推理。",
+        },
+      ] as const,
+      spec_labels: {
+        problem: "问题",
+        thesis: "主张",
+        system: "系统",
+        next: "下一步",
+      },
       items: [
         {
           title: "ShadowBuyer Web Data Audit Agent",
+          role: "cashflow" as const,
           category: "网页证据审计",
           status: "公开证据系统",
           problem:
@@ -117,6 +150,7 @@ export const zh: Dictionary = {
         },
         {
           title: "Agent Flight Recorder",
+          role: "agent_trust" as const,
           category: "Agent 回执协议",
           status: "协议构建中",
           problem:
@@ -136,6 +170,7 @@ export const zh: Dictionary = {
         },
         {
           title: "Solo AI Company OS",
+          role: "os" as const,
           category: "一人公司操作系统",
           status: "公开 GitHub",
           problem:
@@ -155,6 +190,7 @@ export const zh: Dictionary = {
         },
         {
           title: "Reading Reflection OS",
+          role: "learning" as const,
           category: "学习操作系统",
           status: "私有系统",
           problem:
@@ -174,6 +210,7 @@ export const zh: Dictionary = {
         },
         {
           title: "IELTS Assistant",
+          role: "learning" as const,
           category: "AI 学习工具",
           status: "线上产品",
           problem:
@@ -193,6 +230,7 @@ export const zh: Dictionary = {
         },
         {
           title: "Socrates Focus",
+          role: "learning" as const,
           category: "深度学习系统",
           status: "研究系统",
           problem:

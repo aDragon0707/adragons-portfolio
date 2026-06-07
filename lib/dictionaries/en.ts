@@ -83,9 +83,42 @@ export const en = {
       description:
         "They define the public story: agent receipts, web evidence, and the operating system that keeps one person compounding with taste intact.",
       view_all: "Open system ledger",
+      groups: [
+        {
+          key: "cashflow",
+          label: "Cash-flow proof",
+          caption:
+            "Closest to paid pilots. Public-page evidence becomes a one-page audit a buyer can review.",
+        },
+        {
+          key: "agent_trust",
+          label: "Agent-trust proof",
+          caption:
+            "Receipts, claim boundaries, and review gates that make agent work inspectable.",
+        },
+        {
+          key: "os",
+          label: "Operating-system proof",
+          caption:
+            "Durable structure for one operator coordinating many AI workers.",
+        },
+        {
+          key: "learning",
+          label: "Learning systems",
+          caption:
+            "Compounding loops behind the operator: reading, language, reasoning.",
+        },
+      ] as const,
+      spec_labels: {
+        problem: "Problem",
+        thesis: "Thesis",
+        system: "System",
+        next: "Next",
+      },
       items: [
         {
           title: "ShadowBuyer Web Data Audit Agent",
+          role: "cashflow" as const,
           category: "Web evidence audit",
           status: "Public evidence system",
           problem:
@@ -115,6 +148,7 @@ export const en = {
         },
         {
           title: "Agent Flight Recorder",
+          role: "agent_trust" as const,
           category: "Agent receipt protocol",
           status: "Protocol build",
           problem:
@@ -134,6 +168,7 @@ export const en = {
         },
         {
           title: "Solo AI Company OS",
+          role: "os" as const,
           category: "Solo-company operating system",
           status: "Public GitHub",
           problem:
@@ -153,6 +188,7 @@ export const en = {
         },
         {
           title: "Reading Reflection OS",
+          role: "learning" as const,
           category: "Learning operating system",
           status: "Private system",
           problem:
@@ -172,6 +208,7 @@ export const en = {
         },
         {
           title: "IELTS Assistant",
+          role: "learning" as const,
           category: "AI learning tool",
           status: "Live product",
           problem:
@@ -191,6 +228,7 @@ export const en = {
         },
         {
           title: "Socrates Focus",
+          role: "learning" as const,
           category: "Deep learning system",
           status: "Research system",
           problem:

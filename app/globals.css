@@ -16,6 +16,8 @@
   --amber: oklch(0.66 0.14 72);
   --purple: oklch(0.58 0.12 298);
   --soft-purple: oklch(0.95 0.012 295);
+  --radius-control: 8px;
+  --radius-card: 14px;
   --font-ui: var(--font-noto-sans-sc), ui-sans-serif, system-ui,
     -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
     "Microsoft YaHei", sans-serif;
@@ -47,7 +49,17 @@ body {
 
 h1,
 h2,
-h3,
+h3 {
+  overflow-wrap: break-word;
+}
+
+.cjk-safe h1,
+.cjk-safe h2,
+.cjk-safe h3 {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
 p,
 a,
 span,
@@ -195,86 +207,96 @@ a {
 
 .button-link {
   align-items: center;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  color: var(--blue);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-control);
+  color: var(--ink);
   display: inline-flex;
-  font-weight: 700;
-  min-height: 2.9rem;
-  padding: 0.75rem 1.15rem;
+  font-weight: 650;
+  min-height: 2.6rem;
+  padding: 0.6rem 1rem;
   text-decoration: none;
   transition:
-    background-color 0.24s ease,
-    border-color 0.24s ease,
-    box-shadow 0.24s ease,
-    color 0.24s ease,
-    transform 0.24s ease;
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .button-link:hover,
 .button-link:focus-visible {
-  background: var(--soft-purple);
-  border-color: oklch(0.78 0.03 285);
+  background: var(--surface-2);
+  border-color: var(--ink);
   outline: none;
-  transform: translateY(-1px);
 }
 
 .primary-action {
-  background: var(--purple);
-  box-shadow: 0 10px 22px oklch(0.38 0.04 285 / 0.15);
-  color: oklch(0.99 0.004 300);
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
 }
 
 .primary-action:hover,
 .primary-action:focus-visible {
-  background: oklch(0.53 0.13 298);
-  border-color: transparent;
-  color: oklch(0.99 0.004 300);
+  background: var(--blue);
+  border-color: var(--blue);
+  color: var(--paper);
 }
 
 .qr-card,
-.project-proof,
-.note-card,
 .offer-card,
-.featured-note,
-.archive-row,
-.project-ledger-card,
 .status-panel,
 .builder-note,
-.proof-shelf article,
-.signal-step {
+.proof-shelf article {
   background: oklch(1 0 0 / 0.8);
   border: 1px solid var(--line);
-  border-radius: 18px;
-  box-shadow: 0 10px 28px oklch(0.24 0.02 285 / 0.06);
+  border-radius: var(--radius-card);
+  box-shadow: 0 6px 18px oklch(0.24 0.02 285 / 0.04);
 }
 
 .project-proof,
 .note-card,
-.offer-card,
 .featured-note,
 .archive-row,
 .project-ledger-card,
-.signal-step,
+.signal-step {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.project-proof,
+.note-card,
+.featured-note,
+.archive-row,
+.project-ledger-card,
+.signal-step {
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.offer-card,
 .qr-card {
   transition:
-    transform 0.24s ease,
-    border-color 0.24s ease,
-    box-shadow 0.24s ease,
-    background-color 0.24s ease;
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .project-proof:hover,
 .note-card:hover,
-.offer-card:hover,
 .featured-note:hover,
 .archive-row:hover,
 .project-ledger-card:hover,
-.signal-step:hover,
+.signal-step:hover {
+  background: var(--surface-2);
+  border-top-color: var(--line-strong);
+}
+
+.offer-card:hover,
 .qr-card:hover {
   border-color: var(--line-strong);
-  box-shadow: 0 14px 32px oklch(0.24 0.02 285 / 0.09);
-  transform: translateY(-2px);
+  box-shadow: 0 10px 24px oklch(0.24 0.02 285 / 0.07);
 }
 
 .project-proof-meta,
@@ -380,11 +402,11 @@ a {
 
 .brand-hero-title {
   color: var(--ink);
-  font-size: clamp(3.4rem, 6.1vw, 6.4rem);
+  font-size: clamp(2.4rem, 4.4vw, 4.4rem);
   font-weight: 600;
-  letter-spacing: -0.018em;
-  line-height: 1;
-  margin-top: 1.9rem;
+  letter-spacing: -0.012em;
+  line-height: 1.12;
+  margin-top: 1.6rem;
   display: block;
   max-width: 100%;
 }
@@ -418,10 +440,10 @@ a {
 }
 
 .cjk-safe .brand-hero-title {
-  font-size: clamp(3.45rem, 5.65vw, 5.9rem);
+  font-size: clamp(2.2rem, 4vw, 3.9rem);
   font-weight: 600;
-  line-height: 1.12;
-  letter-spacing: -0.035em;
+  line-height: 1.32;
+  letter-spacing: 0;
 }
 
 .brand-hero-subtitle {
@@ -469,13 +491,8 @@ a {
 
 .status-panel::before {
   color: var(--faint);
-  content: "Proof objects";
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 750;
-  letter-spacing: 0.18em;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
+  content: "";
+  display: none;
 }
 
 .status-panel-top,
@@ -539,13 +556,18 @@ a {
 
 .brand-section-title {
   color: var(--ink);
-  font-size: clamp(1.8rem, 2.6vw, 2.8rem);
+  font-size: clamp(1.45rem, 2vw, 2.05rem);
   font-weight: 600;
-  letter-spacing: -0.018em;
-  line-height: 1.14;
+  letter-spacing: -0.012em;
+  line-height: 1.2;
   max-width: none;
   white-space: normal;
   text-wrap: balance;
+}
+
+.cjk-safe .brand-section-title {
+  letter-spacing: 0;
+  line-height: 1.32;
 }
 
 .brand-section-intro {
@@ -597,11 +619,12 @@ a {
 }
 
 .project-proof {
-  padding: 1.1rem;
+  padding: 1.1rem 0 0.4rem;
 }
 
 .project-proof.is-priority {
-  border-color: var(--line-strong);
+  border-top-color: var(--ink);
+  border-top-width: 2px;
 }
 
 .project-proof dl {
@@ -645,7 +668,7 @@ a {
 .note-card {
   display: grid;
   gap: 0.45rem;
-  padding: 1rem;
+  padding: 0.9rem 0 0.5rem;
   text-decoration: none;
 }
 
@@ -717,10 +740,10 @@ a {
 
 .archive-header h1 {
   color: var(--ink);
-  font-size: clamp(3.2rem, 6.2vw, 6.2rem);
+  font-size: clamp(2.2rem, 3.6vw, 3.6rem);
   font-weight: 500;
-  line-height: 1;
-  max-width: 12ch;
+  line-height: 1.12;
+  max-width: 18ch;
 }
 
 .archive-header p:last-child {
@@ -764,9 +787,53 @@ a {
   gap: 0.9rem;
 }
 
+.role-group {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 2.4rem;
+}
+
+.role-group:first-child {
+  margin-top: 0;
+}
+
+.role-group-head {
+  align-items: baseline;
+  border-bottom: 1px solid var(--line-strong);
+  display: grid;
+  gap: 0.35rem;
+  grid-template-columns: minmax(0, 1fr);
+  padding-bottom: 0.65rem;
+}
+
+.role-group-label {
+  color: var(--ink);
+  font-family: var(--font-latin-serif);
+  font-size: clamp(1.1rem, 1.4vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.cjk-safe .role-group-label {
+  font-family: var(--font-serif);
+  letter-spacing: 0;
+}
+
+.role-group-caption {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  max-width: 60ch;
+}
+
+.role-group-list {
+  display: grid;
+  gap: 0.4rem;
+}
+
 .project-ledger-card {
   grid-template-columns: 4.25rem minmax(0, 0.9fr) minmax(0, 1.1fr);
-  padding: 1rem;
+  padding: 1.4rem 0 0.6rem;
 }
 
 .project-ledger-card h2 {
@@ -1129,9 +1196,10 @@ a {
 
   .brand-hero-title,
   .cjk-safe .brand-hero-title {
-    font-size: clamp(3rem, 16vw, 4.6rem);
+    font-size: clamp(2.1rem, 10vw, 3.2rem);
+    line-height: 1.25;
     display: block;
-    max-width: 10ch;
+    max-width: 100%;
     white-space: normal;
   }
 
