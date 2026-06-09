@@ -915,6 +915,32 @@ a {
   padding: 1rem 1.15rem;
 }
 
+.devlog-prose img {
+  background: oklch(0.985 0.004 285);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  box-shadow: 0 14px 34px oklch(0.28 0.018 285 / 0.08);
+  display: block;
+  height: auto;
+  margin: 1.6rem auto 0;
+  max-height: 82vh;
+  object-fit: contain;
+  width: 100%;
+}
+
+.devlog-prose p:has(> img:only-child) {
+  margin-top: 1.8rem;
+}
+
+.devlog-prose p:has(> img:only-child) + p > em:only-child {
+  color: var(--muted);
+  display: block;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-inline: auto;
+  max-width: 44rem;
+  text-align: center;
+}
 .devlog-prose h2,
 .devlog-prose h3 {
   border-bottom: 1px solid var(--line);
