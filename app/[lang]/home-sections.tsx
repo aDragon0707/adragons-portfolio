@@ -58,19 +58,46 @@ export function HomeView({
               {dict.home_sections.projects.intro}
             </p>
 
-            <div className="project-ledger">
-              {dict.projects.items.slice(0, 3).map((project, index) => (
-                <ProjectCard
-                  key={project.title}
-                  project={project}
-                  href={resolveHref(project.primaryHref)}
-                  priority={index === 0}
-                />
-              ))}
+            <div className="proof-preview-list">
+              {(["cashflow", "agent_trust", "os"] as const).map((roleKey) => {
+                const group = dict.projects.groups.find((g) => g.key === roleKey);
+                const project = dict.projects.items.find((p) => p.role === roleKey);
+                if (!group || !project) return null;
+                return (
+                  <div key={roleKey} className="proof-preview-row">
+                    <p className="proof-preview-kicker">{group.label}</p>
+                    <ProjectCard
+                      project={project}
+                      href={resolveHref(project.primaryHref)}
+                      priority={roleKey === "cashflow"}
+                    />
+                  </div>
+                );
+              })}
+
+              {(() => {
+                const learning = dict.projects.groups.find((g) => g.key === "learning");
+                const learningItems = dict.projects.items.filter((p) => p.role === "learning");
+                if (!learning || learningItems.length === 0) return null;
+                return (
+                  <div className="proof-preview-row learning-summary">
+                    <p className="proof-preview-kicker">{learning.label}</p>
+                    <p className="brand-copy learning-summary-caption">{learning.caption}</p>
+                    <ul className="learning-summary-list">
+                      {learningItems.map((item) => (
+                        <li key={item.title}>
+                          <strong>{item.title}</strong>
+                          <span>{item.category}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })()}
             </div>
 
             <a className="quiet-link brand-more-link" href={`/${lang}/projects`}>
-              {dict.home_sections.projects.view_all} -&gt;
+              {dict.home_sections.projects.view_all} <span aria-hidden="true">→</span>
             </a>
           </div>
         </div>
@@ -198,7 +225,7 @@ function WritingSection({
       </div>
       <div className="brand-note-links">
         <a className="quiet-link" href={viewHref}>
-          {viewLabel} -&gt;
+          {viewLabel} <span aria-hidden="true">→</span>
         </a>
       </div>
     </Section>
@@ -234,16 +261,16 @@ function Section({
 
 function MetadataPanel({ dict }: { dict: HomeDict }) {
   return (
-    <aside className="builder-note" aria-label={dict.status.label}>
-      <h2>{dict.status.title}</h2>
-      <div className="status-stack">
+    <aside className="builder-strip" aria-label={dict.status.label}>
+      <p className="brand-label">{dict.status.label}</p>
+      <dl className="builder-strip-list">
         {dict.status.items.map(([label, value]) => (
           <div key={label}>
-            <span>{label}</span>
-            <strong>{value}</strong>
+            <dt>{label}</dt>
+            <dd>{value}</dd>
           </div>
         ))}
-      </div>
+      </dl>
     </aside>
   );
 }
@@ -284,7 +311,7 @@ function ProjectCard({
           rel={isExternal ? "noopener noreferrer" : undefined}
           className="quiet-link"
         >
-          {project.primaryLabel} -&gt;
+          {project.primaryLabel} <span aria-hidden="true">→</span>
         </a>
         {project.secondaryLinks.map((link) => (
           <a

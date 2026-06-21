@@ -87,30 +87,30 @@ export const zh: Dictionary = {
       view_all: "打开系统台账",
       groups: [
         {
-          key: "cashflow",
+          key: "cashflow" as const,
           label: "现金流证据",
           caption:
             "最接近付费试点。把公开页面证据整理成买家可复查的一页审计。",
         },
         {
-          key: "agent_trust",
+          key: "agent_trust" as const,
           label: "Agent 信任证据",
           caption:
             "用回执、声明边界和复核门槛让 Agent 工作可被检查。",
         },
         {
-          key: "os",
+          key: "os" as const,
           label: "操作系统证据",
           caption:
             "一个人协调多个 AI worker 的长期结构。",
         },
         {
-          key: "learning",
+          key: "learning" as const,
           label: "学习系统",
           caption:
             "操作者背后的复利循环：阅读、语言、推理。",
         },
-      ] as const,
+      ],
       spec_labels: {
         problem: "问题",
         thesis: "主张",

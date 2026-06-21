@@ -618,6 +618,120 @@ a {
   margin-top: 1rem;
 }
 
+.proof-preview-list {
+  display: grid;
+  gap: 1.6rem;
+  margin-top: 1rem;
+}
+
+.proof-preview-row {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.proof-preview-kicker {
+  color: var(--faint);
+  font-size: 0.74rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.cjk-safe .proof-preview-kicker {
+  letter-spacing: 0.06em;
+}
+
+.learning-summary {
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+}
+
+.learning-summary-caption {
+  margin-top: 0.35rem;
+}
+
+.learning-summary-list {
+  display: grid;
+  gap: 0.55rem;
+  list-style: none;
+  margin-top: 0.9rem;
+  padding: 0;
+}
+
+.learning-summary-list li {
+  align-items: baseline;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 0.4rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding-top: 0.55rem;
+}
+
+.learning-summary-list strong {
+  color: var(--ink);
+  font-size: 0.98rem;
+  font-weight: 650;
+}
+
+.learning-summary-list span {
+  color: var(--faint);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.cjk-safe .learning-summary-list span {
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+.builder-strip {
+  align-self: start;
+  display: grid;
+  gap: 0.9rem;
+  margin-top: clamp(2rem, 3.6vw, 3.2rem);
+  padding: 0;
+}
+
+.builder-strip .brand-label {
+  margin: 0;
+}
+
+.builder-strip-list {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+}
+
+.builder-strip-list > div {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 0.2rem;
+  padding-top: 0.55rem;
+}
+
+.builder-strip-list dt {
+  color: var(--faint);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cjk-safe .builder-strip-list dt {
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+.builder-strip-list dd {
+  color: var(--ink);
+  font-size: 0.96rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
 .project-proof {
   padding: 1.1rem 0 0.4rem;
 }
@@ -1008,6 +1122,7 @@ a {
   max-width: 44rem;
   text-align: center;
 }
+
 .devlog-prose h2,
 .devlog-prose h3 {
   border-bottom: 1px solid var(--line);

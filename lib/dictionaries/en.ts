@@ -85,30 +85,30 @@ export const en = {
       view_all: "Open system ledger",
       groups: [
         {
-          key: "cashflow",
+          key: "cashflow" as const,
           label: "Cash-flow proof",
           caption:
             "Closest to paid pilots. Public-page evidence becomes a one-page audit a buyer can review.",
         },
         {
-          key: "agent_trust",
+          key: "agent_trust" as const,
           label: "Agent-trust proof",
           caption:
             "Receipts, claim boundaries, and review gates that make agent work inspectable.",
         },
         {
-          key: "os",
+          key: "os" as const,
           label: "Operating-system proof",
           caption:
             "Durable structure for one operator coordinating many AI workers.",
         },
         {
-          key: "learning",
+          key: "learning" as const,
           label: "Learning systems",
           caption:
             "Compounding loops behind the operator: reading, language, reasoning.",
         },
-      ] as const,
+      ],
       spec_labels: {
         problem: "Problem",
         thesis: "Thesis",
